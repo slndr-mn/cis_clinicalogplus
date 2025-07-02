@@ -3,7 +3,7 @@
     <div class="sidebar-logo">
       <div class="logo-header">
         <a href="/dashboard" class="logo">
-          <img src="/assets/img/sidebar-logo.svg" alt="navbar brand" class="navbar-brand" height="60" />
+          <img src="" alt="navbar brand" class="navbar-brand" height="60" />
         </a>
         <div class="nav-toggle">
           <button class="btn btn-toggle toggle-sidebar"><i class="gg-menu-right"></i></button>

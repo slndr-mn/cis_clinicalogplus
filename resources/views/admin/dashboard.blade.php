@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link rel="icon" href="{{ asset('assets/img/ClinicaLog.ico') }}" type="image/x-icon" />
 
     {{-- Fonts and Icons --}}
-    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
             google: { families: ["Public Sans:300,400,500,600,700"] },
@@ -16,7 +16,7 @@
                     "Font Awesome 5 Solid",
                     "Font Awesome 5 Regular",
                     "Font Awesome 5 Brands",
-                    "simple-line-icons",
+                    "simple-line-icons", 
                 ],
                 urls: ["{{ asset('css/fonts.min.css') }}"],
             },
@@ -24,10 +24,10 @@
                 sessionStorage.fonts = true;
             },
         });
-    </script>
+    </script> --}}
 
     {{-- Vite styles --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         .sidebar {
@@ -45,7 +45,7 @@
             color: #fff;
         }
     </style>
-</head>
+</head> --}}
 
 <body>
     <div class="wrapper">
@@ -199,11 +199,11 @@
         </div>
     </div>
 
-    {{-- External JS --}}
+    {{-- External JS
     <script src="{{ asset('js/core/jquery.3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
     <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugin/chart.js/chart.min.js') }}"></script>
-    <script src="{{ asset('js/kaiadmin.min.js') }}"></script>
+    <script src="{{ asset('js/kaiadmin.min.js') }}"></script> --}}
 </body>
 </html>
