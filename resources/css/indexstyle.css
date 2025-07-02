@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+    background-image: url("../img/background-index.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Raleway', sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: -40px;
+}
+
+#name {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.8;
+    margin: 0;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.line1,
+.line2 {
+    display: block;
+    font-size: 80px;
+    line-height: 0;
+}
+
+.button {
+    background-color: #DA6F64;
+    color: white;
+    width: 240px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #c0584f;
+    transform: scale(1.05);
+}
+
+.button .arrow {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+@media (max-width: 2650px) {
+    #logo {
+        width: 200px;
+        height: auto;
+    }
+
+    #name {
+        font-size: 100px;
+    }
+
+    .line1, .line2 {
+        font-size: 80px;
+    }
+
+    .button {
+        width: 200px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-image: url("../img/background-medium.png");
+    }
+
+    #logo {
+        width: 150px;
+        height: auto;
+    }
+
+    #name {
+        font-size: 80px;
+    }
+
+    .line1, .line2 {
+        font-size: 48px;
+    }
+
+    .button {
+        width: 200px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-image: url("../img/background-small.png");
+    }
+
+    #logo {
+        width: 120px;
+        height: auto;
+        margin-left: -17px;
+    }
+
+    #name {
+        font-size: 42px;
+    }
+
+    .line1, .line2 {
+        font-size: 32px;
+    }
+
+    .button {
+        width: 180px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .button .arrow {
+        font-size: 16px;
+    }
+}

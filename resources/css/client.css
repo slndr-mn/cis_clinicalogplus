@@ -1,0 +1,88 @@
+/* Main client panel */
+#clientpanel {
+    width: 100% !important;
+    height: 100vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide scrollbar for WebKit (Chrome, Safari) */
+#clientpanel::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar for Firefox */
+#clientpanel {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Inner content to fill available space */
+.page-inner {
+    flex: 1;
+    overflow-y: auto; /* Allow inner scroll but hide scrollbar */
+    max-height: calc(100vh - 60px); /* Adjust if header size changes */
+}
+
+/* Hide scrollbar for WebKit (Chrome, Safari) inside .page-inner */
+.page-inner::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar for Firefox inside .page-inner */
+.page-inner {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Main content area */
+.main-panel {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar for WebKit inside .main-panel */
+.main-panel::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar for Firefox inside .main-panel */
+.main-panel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Calendar content */
+.calendar-dates {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar inside calendar */
+.calendar-dates::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.calendar-dates {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #clientpanel, .page-inner {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .appointment-form h3 {
+        font-size: 1.1rem;
+    }
+}
