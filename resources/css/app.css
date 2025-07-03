@@ -1,6 +1,7 @@
-@import 'bootstrap.min.css';
-@import 'plugins.min.css';
-@import 'kaiadmin.min.css';
+
+@import '../css/bootstrap.min.css';
+@import '../css/plugins.min.css';
+@import '../css/kaiadmin.min.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -12,19 +13,23 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* Optional: Your custom inline CSS */
 .sidebar {
-    transition: background 0.3s ease;
-    background: linear-gradient(to bottom, #DB6079, #DA6F65, #E29AB4);
-}
-.logo-header {
-    transition: background 0.3s ease;
-}
-.nav-item.active {
-    background-color: rgba(0, 0, 0, 0.1);
-    color: #fff;
-}
-.nav-item.active i {
-    color: #fff;
-}
-   
+          transition: background 0.3s ease;
+          /* Initial background */
+          background: linear-gradient(to bottom, #DB6079, #DA6F65, #E29AB4);
+      }
+      .logo-header {
+          transition: background 0.3s ease;
+      }
+      .nav-item.active {
+            background-color: rgba(0, 0, 0, 0.1); 
+            color: #fff; 
+        }
+
+        .nav-item.active i {
+            color: #fff;
+        } 
+ 
+
+        
+ 

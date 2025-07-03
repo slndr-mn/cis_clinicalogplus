@@ -17,16 +17,17 @@
         <form id="login-form" action="{{ route('login') }}" method="post" autocomplete="off">
             @csrf
 
-            @if ($errors->any())
-                <div class="error" style="color: red;">
+           
+            <p id="welcome">Welcome!</p> 
+            <p id="login2">Login to Continue</p>
+            
+             @if ($errors->any())
+                <div style="text-align: center; color: red; margin-bottom: 1rem;">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach
                 </div>
             @endif
-            <p id="welcome">Welcome!</p>
-            <p id="login2">Login to Continue</p>
- 
             <div class="form-container">
                 <div class="form-group">
                     <label for="email" class="form-label">Email:</label> 
@@ -43,7 +44,7 @@
 
                 <div class="forgotpassword"> 
                     <span id="forgot">Forgot Password?</span>
-                    <span id="click"><a href="forgotpassword.php">Click Here.</a></span>
+                    <span id="click"><a href="{{ route('password.request') }}">Click Here.</a></span>
                 </div>
             </div>
 

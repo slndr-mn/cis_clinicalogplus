@@ -1,36 +1,21 @@
-import './bootstrap'; // Optional Laravel default
-import '../css/app.css'; // Import CSS
-import { createApp } from 'vue'
-import Sidebar from '../js/components/Header.vue';
-import Header from '../js/components/Sidebar.vue'
+import { createApp } from 'vue';
+import Sidebar from './components/Sidebar.vue';
+import Header from './components/Header.vue';
+
+import '../js/plugin/webfont/webfont.min.js';
+import '../js//core/jquery-3.7.1.min.js';
+import '../js//core/popper.min.js';
+import '../js//core/bootstrap.min.js';
 
 
-const app = createApp({})
 
+const mount = (selector, component) => {
+    const el = document.querySelector(selector);
+    if (el) {
+        createApp(component).mount(el);
+    }
+};
 
-WebFont.load({
-    google: { families: ["Public Sans:300,400,500,600,700"] },
-    custom: {
-        families: [
-            "Font Awesome 5 Solid",
-            "Font Awesome 5 Regular",
-            "Font Awesome 5 Brands",
-            "simple-line-icons",
-        ], 
-        urls: ["/css/fonts.min.css"],
-    },
-    active: () => sessionStorage.fonts = true,
-});
+mount('#sidebar', Sidebar);
+mount('#header', Header);
  
-// // Include other JS plugins
-// import '../js/plugin/chart.js/chart.min.js';
-// import '../js/kaiadmin.min.js';
-// import '../js/plugin/list.js/list.min.js';
-// Add more as needed
-
-app.component('Sidebar', Sidebar)
-app.component('HeaderBar', Header)
-
-app.mount('#sidebar') 
-app.mount('#header')
-

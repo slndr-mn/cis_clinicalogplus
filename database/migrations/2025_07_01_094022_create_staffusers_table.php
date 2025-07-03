@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('user_lname', 255);
             $table->string('user_mname', 255)->nullable();
             $table->string('user_email');
-            $table->string('email_hash', 64)->index();
+            $table->string('email_hash', 64)->index(); 
             $table->text('user_contact')->nullable();
             $table->text('user_address')->nullable();
             $table->string('user_position', 50);

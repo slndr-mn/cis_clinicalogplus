@@ -11,7 +11,10 @@ export default defineConfig({
                ...globSync('resources/css/**/*.css'), 
                 ...globSync('resources/js/**/*.js')
             ],
+
+            list: 'resources/js/plugin/list.js/list.min.js',
             refresh: true,
+
         }),
        vue(),
     ],

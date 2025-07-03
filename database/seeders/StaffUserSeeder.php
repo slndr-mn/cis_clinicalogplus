@@ -11,11 +11,11 @@ class StaffUserSeeder extends Seeder
     public function run(): void
     {
        StaffUser::create([
-        'user_idnum'    => '202312345',
+        'user_idnum'    => '202312348',
         'user_fname'    => 'Juan',
         'user_lname'    => 'Dela Cruz',
         'user_mname'    => 'Santos',
-        'user_email'    => 'admin@clinic.com',
+        'user_email'    => 'gmdcasia00136@usep.edu.ph',
         'user_contact'  => '09123456789',
         'user_address'  => 'Tagum City',
         'user_position' => 'Admin',
@@ -24,7 +24,7 @@ class StaffUserSeeder extends Seeder
         'user_profile'  => 'default.png',
         'user_password' => Hash::make('password123'),
         'user_code'     => 123456,
-    ]);
+        ]);
 
     } 
 }

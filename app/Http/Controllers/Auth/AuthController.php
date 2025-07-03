@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt; 
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; 
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use App\Models\StaffUser;
@@ -63,7 +64,7 @@ class AuthController extends Controller
             return $this->handlePatientRedirect($patient->patient_patienttype);
         }
 
-        // If both fail
+        // If both fail 
         throw ValidationException::withMessages([
             'user_email' => 'Invalid credentials.',
         ]);
