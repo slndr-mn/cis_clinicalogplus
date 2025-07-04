@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientRecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\AdminController;
@@ -27,25 +28,26 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name(
 
 
 // Admin dashboard routes (requires guard:admin)
-Route::middleware('auth:admin')->group(function () { 
+Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/logout', [AuthController::class, 'adminLogout'])->name('admin.logout');
 });
 
-// Admin dashboard routes (requires guard:admin) 
+// Admin dashboard routes (requires guard:admin)
 Route::middleware('auth:patient')->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
     Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
 });
- 
+
 // Route for Patient Record
-Route::get('/patient-record', function () {
-    return view('admin.partials.patientRecord');
-})->name('patient.record');
+// Route::get('/patient-record', function () {
+//     return view('admin.patientRecord');
+// })->name('patientRecord');
+Route::get('/patientRecord', [PatientRecordController::class, 'index'])->name('admin.patientRecord');
 
-// Route for Medicine Record
+
+// // Route for Medicine Record
 Route::get('/medicine-record', function () {
-    return view('admin.partials.medicineRecord');
-})->name('medicine.record');
+    return view('admin.medicineRecord');
+})->name('medicineRecord');
 
-  

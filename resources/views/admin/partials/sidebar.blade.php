@@ -16,7 +16,7 @@
             <button class="topbar-toggler more">
               <i class="gg-more-vertical-alt"></i>
             </button>
-          </div> 
+          </div>
           <!-- End Logo Header -->
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -24,9 +24,9 @@
             <ul class="nav nav-secondary">
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i> 
+                  <i class="fa fa-ellipsis-h"></i>
                 </span>
-              </li> 
+              </li>
               <li class="nav-item" id="dashboard-item">
                 <a href="index.php">
                   <i class="fa fas fas fa-home"></i>
@@ -34,13 +34,13 @@
                 </a>
               </li>
              <li class="nav-item" id="medicine-item">
-                <a href="{{ route('medicine.record') }}">
+                <a href="{{ route('medicineRecord') }}">
                   <i class="fa fas fa-capsules"></i>
                   <p>Medicine</p>
                 </a>
               </li>
               <li class="nav-item" id="patientrec-item">
-                <a href="{{ route('patient.record') }}">
+                <a href="{{ route('admin.patientRecord') }}">
                   <i class="fa fas fas fa-notes-medical"></i>
                   <p>Patient Record</p>
                 </a>
@@ -61,16 +61,16 @@
                 <a href="offcampusadd.php">
                   <i class="fas fas fa-arrow-alt-circle-right"></i>
                   <p>Mabini Unit Issuance</p>
-                </a>  
+                </a>
               </li>
               <li class="nav-item" id="inventory-item">
                 <a href="inventory.php">
                   <i class="fas fas fa-clipboard-list"></i>
-                  <p>Medicine Report</p> 
+                  <p>Medicine Report</p>
                 </a>
               </li>
               <li class="nav-item" id="reports-item">
-                <a href="reports.php"> 
+                <a href="reports.php">
                   <i class="fas fas fa-file-medical"></i>
                   <p>Transaction Report</p>
                 </a>
@@ -82,6 +82,6 @@
                 </a>
               </li>
             </ul>
-          </div> 
+          </div>
         </div>
         </div>
