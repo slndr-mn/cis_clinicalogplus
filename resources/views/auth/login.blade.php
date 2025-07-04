@@ -27,7 +27,7 @@
                         <p>{{ $error }}</p>
                     @endforeach
                 </div>
-            @endif
+            @endif 
             <div class="form-container">
                 <div class="form-group">
                     <label for="email" class="form-label">Email:</label> 

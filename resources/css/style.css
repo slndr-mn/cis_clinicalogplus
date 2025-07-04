@@ -211,3 +211,33 @@ body{
         font-size: 12px;
     }
 }
+
+/* .nav-search .input-group {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 4px 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.nav-search .form-control {
+    border: none;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .main-header-logo .d-flex {
+    flex-wrap: wrap;
+  }
+
+  .topbar-toggler.more {
+    margin-left: auto;
+  }
+
+  .dropdown-menu {
+    min-width: 100% !important;
+  }
+} */

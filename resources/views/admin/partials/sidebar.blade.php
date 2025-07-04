@@ -3,13 +3,7 @@
           <!-- Logo Header -->
           <div class="logo-header" id="logo-header">
             <a href="index.php" class="logo">
-              <img
-                src="../assets/img/sidebar-logo.svg"
-                alt="navbar brand"
-                class="navbar-brand"
-                height="60"
-                
-              />
+                <img src="{{ asset('img/Clinicalog.png') }}" alt="navbar brand" class="navbar-brand" height="60" />
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
@@ -39,17 +33,17 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item" id="medicine-item">
-                <a href="medicinetable.php">
+             <li class="nav-item" id="medicine-item">
+                <a href="{{ route('medicine.record') }}">
                   <i class="fa fas fa-capsules"></i>
                   <p>Medicine</p>
                 </a>
               </li>
               <li class="nav-item" id="patientrec-item">
-                <a href="patient-record.php">
+                <a href="{{ route('patient.record') }}">
                   <i class="fa fas fas fa-notes-medical"></i>
                   <p>Patient Record</p>
-                </a> 
+                </a>
               </li>
               <li class="nav-item" id="patientrec-item">
                 <a href="addconsultation.php">

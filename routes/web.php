@@ -38,6 +38,14 @@ Route::middleware('auth:patient')->group(function () {
     Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
 });
  
+// Route for Patient Record
+Route::get('/patient-record', function () {
+    return view('admin.partials.patientRecord');
+})->name('patient.record');
 
+// Route for Medicine Record
+Route::get('/medicine-record', function () {
+    return view('admin.partials.medicineRecord');
+})->name('medicine.record');
 
   
