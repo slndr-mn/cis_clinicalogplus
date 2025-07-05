@@ -28,7 +28,7 @@
                 </span>
               </li>
               <li class="nav-item" id="dashboard-item">
-                <a href="index.php">
+                <a href="{{ route('admin.dashboard') }}">
                   <i class="fa fas fas fa-home"></i>
                   <p>Dashboard</p>
                 </a>
@@ -76,7 +76,7 @@
                 </a>
               </li>
               <li class="nav-item" id="staffuser-item">
-                <a href="staffuser.php">
+                <a href="{{ route('admin.staffuser') }}">
                   <i class="fas fa-users"></i>
                   <p>Clinic Staff User</p>
                 </a>
