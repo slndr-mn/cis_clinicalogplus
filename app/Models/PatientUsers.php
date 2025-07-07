@@ -75,7 +75,7 @@ class PatientUsers extends Authenticatable
 
     public function getPatientContactAttribute($value)
     {
-        return Crypt::decrypt($value);
+        return Crypt::decrypt($value); 
     }
 
     // Encrypt & Decrypt Address
