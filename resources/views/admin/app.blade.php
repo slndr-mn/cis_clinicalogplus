@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>CIS: Clinicalog</title>
 
     {{-- Laravel Vite Assets --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([
+        'resources/css/app.css',
+        'resources/css/sidebar.css', 
+        'resources/js/app.js'
+    ])
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('ClinicaLog.ico') }}" type="image/x-icon" />
@@ -17,28 +21,25 @@
     {{-- Remix Icon --}}
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- HEAD -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- CSS.GG Icons (no need to include twice) --}}
+    {{-- CSS.GG Icons --}}
     <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
 
-    
     {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
 <body>
     {{-- Header --}}
     @include('admin.partials.header')
 
-    <div class="d-flex">
+    <div class="d-flex flex-column flex-lg-row">
         {{-- Sidebar --}}
         @include('admin.partials.sidebar')
 
         {{-- Main Content --}}
         <main class="p-4 flex-grow-1">
-            @yield('content') 
+            @yield('content')
         </main>
     </div>
 </body>
