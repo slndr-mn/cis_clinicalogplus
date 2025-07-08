@@ -16,7 +16,7 @@
 
 <body>
     <a href="../php-admin/index.php"></a>
-    <img src="{{ asset('img/logo.png') }}" alt="logo" id="logo">
+    <img src="{{ asset('img/logo.png') }}" alt="logo" id="logo"> 
     <h1 id="name">USeP Tagum-Mabini Campus Clinic Management System</h1>
 
     <div class="wrapper">
