@@ -54,3 +54,4 @@ Route::get('/medicine-record', function () {
 Route::get('/staff-users', function () {
     return view('admin.staffuser');
 })->name('admin.staffuser');
+
