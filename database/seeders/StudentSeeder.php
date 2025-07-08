@@ -28,8 +28,7 @@ class StudentSeeder extends Seeder
             'patient_patienttype' => 'Student',
             'patient_profile' => 'default.png',
             'patient_password' => Hash::make('password123'),
-            'patient_status' => 'Active',
-            'patient_code' => 123456,
+            'patient_status' => 'Active'
         ]);
 
         // Create student-specific record

@@ -18,7 +18,7 @@ class StaffUser extends Authenticatable
     protected $fillable = [
         'user_idnum',
         'user_fname',
-        'user_lname',
+        'user_lname', 
         'user_mname',
         'user_email',
         'email_hash',
@@ -29,7 +29,8 @@ class StaffUser extends Authenticatable
         'user_status',
         'user_profile',
         'user_password',
-        'user_code',
+        'user_otpcode',
+        'user_otpexpiresat'
     ];
 
     protected $hidden = [
@@ -74,7 +75,7 @@ class StaffUser extends Authenticatable
     {
         $this->attributes['user_contact'] = Crypt::encrypt($value);
     }
-
+ 
     public function getUserContactAttribute($value)
     {
         return Crypt::decrypt($value);
