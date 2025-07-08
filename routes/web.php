@@ -39,10 +39,7 @@ Route::middleware('auth:patient')->group(function () {
     Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
 });
 
-// Route for Patient Record
-// Route::get('/patient-record', function () {
-//     return view('admin.patientRecord');
-// })->name('patientRecord');
+
 Route::get('/patientRecord', [PatientRecordController::class, 'index'])->name('admin.patientRecord');
 
 

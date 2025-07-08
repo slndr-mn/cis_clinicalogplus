@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title', 'Patient Record')
+@section('title', 'Patient Records - Staff')
 @section('content')
     <div class="container" id="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                             <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border"
                                 role="tablist">
                                 <li>
-                                    <a class="nav-link active" href="patient-record.php" role="tab">All</a>
+                                    <a class="nav-link" href="patient-record.php" role="tab">All</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="patient-recordstud.php" role="tab">Student</a>
@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="patient-recordfac.php" role="tab">Faculty</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordstaff.php" role="tab">Staff</a>
+                                    <a class="nav-link active" href="patient-recordstaff.php" role="tab">Staff</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="patient-recordexten.php" role="tab">Extension</a>
@@ -93,57 +93,93 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="table-responsive">
                                     <table id="add-patient" class="table table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
+                                                <th>Name & ID</th>
                                                 <th>Email</th>
                                                 <th>Sex</th>
-                                                <th>Type</th>
+                                                <th>Office</th>
+                                                <th>Role</th>
                                                 <th>Status</th>
                                                 <th style="width: 10%">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Ashley</td>
-                                            <td>a@gmail.com</td>
-                                            <td>female</td>
-                                            <td>student</td>
-                                            <td>active</td>
-                                            <td></td>
-
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Ashley</td>
-                                            <td>a@gmail.com</td>
-                                            <td>female</td>
-                                            <td>student</td>
-                                            <td>active</td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
+                                                <th>Name & ID</th>
                                                 <th>Email</th>
                                                 <th>Sex</th>
-                                                <th>Type</th>
+                                                <th>Office</th>
+                                                <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
+                                            <?php
+                                            $patientTables = new PatientTablesbyType($conn);
+                                            $staffs = $patientTables->getAllStaffs();
+                                            $counter = 1;
 
+                                            foreach ($staffs as $staff) {
+                                                // Determine the status and color for each staff
+                                                $statusText = isset($staff->staff_status) && $staff->staff_status == 'Inactive' ? 'Disabled' : 'Enabled';
+                                                $statusColor = isset($staff->staff_status) && $staff->staff_status == 'Inactive' ? '#ff6961' : '#77dd77';
+
+                                                echo '<tr>';
+                                                echo '<td>' . $counter++ . '</td>';
+                                                echo '<td>' . $staff->full_name . '</td>';
+                                                echo '<td>' . $staff->staff_email . '</td>';
+                                                echo '<td>' . $staff->staff_sex . '</td>';
+                                                echo '<td>' . $staff->staff_office . '</td>';
+                                                echo '<td>' . $staff->staff_role . '</td>';
+
+                                                // Status span with dynamic color and text
+                                                echo '<td>
+                                                                                        <span style="display: inline-block;
+                                                                                                    padding: 5px 10px;
+                                                                                                    border-radius: 50px;
+                                                                                                    background-color: ' .
+                                                    $statusColor .
+                                                    '; /* Color based on status */
+                                                                                                    color: white;
+                                                                                                    text-align: center;
+                                                                                                    min-width: 60px;">
+                                                                                            ' .
+                                                    $statusText .
+                                                    '
+                                                                                        </span>
+                                                                                    </td>';
+
+                                                echo '<td>
+                                                                                    <div class="form-button-action">
+                                                                                        <button type="submit" class="btn btn-link btn-primary btn-lg viewButton"
+                                                                                                data-id="' .
+                                                    $staff->patient_id .
+                                                    '" data-type="' .
+                                                    $staff->patient_type .
+                                                    '">
+                                                                                            <i class="fa fa-eye"></i>
+                                                                                        </button>
+                                                                                        <button type="submit" class="btn btn-link btn-primary btn-lg editButton"
+                                                                                                data-id="' .
+                                                    $staff->patient_id .
+                                                    '" data-type="' .
+                                                    $staff->patient_type .
+                                                    '">
+                                                                                            <i class="fa fa-edit"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </td>';
+                                                echo '</tr>';
+                                            }
+                                            ?>
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
@@ -153,7 +189,8 @@
             </div>
         </div>
     </div>
-
+    </div>
+    </div>
     @push('scripts')
         <script>
             $(document).ready(function() {
