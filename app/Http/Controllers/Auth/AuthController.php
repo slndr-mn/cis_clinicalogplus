@@ -77,7 +77,7 @@ class AuthController extends Controller
             session(['otp:type' => 'admin', 'otp:user:id' => $admin->user_id]);
             Auth::logout(); 
 
-             return redirect()->route('otp.form');
+             return redirect()->route('otp.form'); 
         }
 
         // Try patient login next

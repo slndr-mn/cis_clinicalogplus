@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\PatientRecordController;
 
 
 Route::get('/', function () {
@@ -15,11 +17,15 @@ Route::get('/', function () {
 
 // Login routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'store'])->name('login');
+Route::post('/login', [AuthController::class, 'store'])->name('loginstore');
+
+Route::get('/two-factor-auth', [AuthController::class, 'showOtpForm'])->name('otp.form');
+Route::post('/two-factor-auth', [AuthController::class, 'verifyOtp'])->name('otp.verify');
+
+
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
     ->name('password.request');
-
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
     ->name('password.email');
 
@@ -39,12 +45,20 @@ Route::middleware('auth:patient')->group(function () {
     Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
 });
 
-
+// Route for Patient Record
+// Route::get('/patient-record', function () {
+//     return view('admin.patientRecord');
+// })->name('patientRecord');
 Route::get('/patientRecord', [PatientRecordController::class, 'index'])->name('admin.patientRecord');
-
 
 // // Route for Medicine Record
 Route::get('/medicine-record', function () {
     return view('admin.medicineRecord');
 })->name('medicineRecord');
+
+Route::get('/staff-users', function () {
+    return view('admin.staffuser');
+})->name('admin.staffuser');
+
+
 

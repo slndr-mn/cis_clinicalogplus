@@ -108,27 +108,6 @@
                                                 <th style="width: 10%">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Ashley</td>
-                                            <td>a@gmail.com</td>
-                                            <td>female</td>
-                                            <td>student</td>
-                                            <td>active</td>
-                                            <td></td>
-
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Ashley</td>
-                                            <td>a@gmail.com</td>
-                                            <td>female</td>
-                                            <td>student</td>
-                                            <td>active</td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>No.</th>
