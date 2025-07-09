@@ -8,7 +8,6 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\PatientRecordController;
 
 
 Route::get('/', function () {

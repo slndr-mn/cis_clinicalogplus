@@ -5197,7 +5197,8 @@ label.error {
 
 .navbar-header .container-fluid {
    min-height: inherit;
-   padding: 0 !important
+   padding: 0 !important;
+   /* width:100% */
 }
 
 .navbar-header .dropdown-toggle::after {
