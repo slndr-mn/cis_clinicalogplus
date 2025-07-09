@@ -106,12 +106,13 @@
         {{-- Main Panel --}}
         <div class="main-panel">
             @include('admin.partials.header')
-
+        <div class="container" id="content">
             <main>
                 @yield('content')
             </main>
         </div>
     </div>
+</div>
 
     {{-- Scripts --}}
     {{-- jQuery (required by Bootstrap and possibly kaiadmin.js) --}}
