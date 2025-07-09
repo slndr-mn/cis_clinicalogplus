@@ -6,11 +6,18 @@
             padding: 0 0.5rem;
         }
         .breadcrumb .breadcrumb-item a {
-            color: #6c757d !important; /* Bootstrap 5 primary blue */
+            color: #6c757d !important;
             text-decoration: underline;
         }
         .breadcrumb .breadcrumb-item a:hover {
-            color: #d63384 !important; /* Slightly darker blue on hover */
+            color: #d63384 !important;
+        }
+        /* Breadcrumbs lower and right-aligned */
+        .breadcrumb {
+            margin-top: 2rem;
+            justify-content: flex-start;
+            display: flex;
+            margin-left: 70px;
         }
     </style>
 <!DOCTYPE html>
