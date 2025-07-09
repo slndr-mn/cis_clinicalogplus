@@ -8,7 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\PatientRecordController;
+
 
 
 Route::get('/', function () {
@@ -45,13 +45,54 @@ Route::middleware('auth:patient')->group(function () {
     Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
 });
 
-// Route for Patient Record
-// Route::get('/patient-record', function () {
+// Route for Patient Record (for sidebar and All button)
+// Both sidebar and All button should use the same route for consistency
+Route::get('/admin/patientRecord', [PatientRecordController::class, 'index'])->name('patientRecord');
+// Route::get('/patientRecord', function () {
 //     return view('admin.patientRecord');
 // })->name('patientRecord');
-Route::get('/patientRecord', [PatientRecordController::class, 'index'])->name('admin.patientRecord');
 
-// // Route for Medicine Record
+// Route for Patient Record Student
+Route::get('/patientRecordstud', function () {
+    return view('admin.patientRecordstud');
+})->name('patientRecordstud');
+
+// Route for Patient Record Faculty
+Route::get('/patientRecordfac', function () {
+    return view('admin.patientRecordfac');
+})->name('patientRecordfac');
+
+// Route for Patient Record Staff
+Route::get('/patientRecordstaff', function () {
+    return view('admin.patientRecordstaff');
+})->name('patientRecordstaff');
+
+// Route for Patient Record Extension
+Route::get('/patientRecordexten', function () {
+    return view('admin.patientRecordexten');
+})->name('patientRecordexten');
+
+// Route for Adding Patient Record Student
+Route::get('/addStudent', function () {
+    return view('admin.addStudent');
+})->name('addStudent');
+
+// Route for Adding Patient Record Faculty
+Route::get('/addFaculty', function () {
+    return view('admin.addFaculty');
+})->name('addFaculty');
+
+// Route for Adding Patient Record Staff
+Route::get('/addStaff', function () {
+    return view('admin.addStaff');
+})->name('addStaff');
+
+// Route for Adding Patient Record Extension
+Route::get('/addExtension', function () {
+    return view('admin.addExtension');
+})->name('addExtension');
+
+// Route for Medicine Record
 Route::get('/medicine-record', function () {
     return view('admin.medicineRecord');
 })->name('medicineRecord');

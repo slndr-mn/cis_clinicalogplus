@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section('title', 'Patient Records - Faculty')
 @section('content')
-
+{{ Breadcrumbs::render('patientRecord.faculty') }}
     <body>
         <!-- Main Content -->
 
@@ -14,19 +14,19 @@
                                 <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border"
                                     role="tablist">
                                     <li>
-                                        <a class="nav-link" href="patient-record.php" role="tab">All</a>
+                                        <a href="{{ route('patientRecord') }}" class="nav-link">All</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="patient-recordstud.php" role="tab">Student</a>
+                                        <a href="{{ route('patientRecordstud') }}" class="nav-link">Student</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link active" href="patient-recordfac.php" role="tab">Faculty</a>
+                                        <a href="{{ route('patientRecordfac') }}" class="nav-link">Faculty</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="patient-recordstaff.php" role="tab">Staff</a>
+                                        <a href="{{ route('patientRecordstaff') }}" class="nav-link">Staff</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="patient-recordexten.php" role="tab">Extension</a>
+                                        <a href="{{ route('patientRecordexten') }}" class="nav-link">Extension</a>
                                     </li>
                                 </ul>
                             </div>
@@ -63,29 +63,29 @@
                                                 <div class="modal-body">
                                                     <form class="modalButton">
                                                         <!-- Button for Student Patient -->
-                                                        <a href="addstudent.php">
+                                                        <a href="{{ route('addStudent') }}">
                                                             <button type="button"
                                                                 class="btn btn-primary btn-round ms-auto custom-button"
                                                                 id="addbutton">
                                                                 Student
                                                             </button>
                                                         </a>
-                                                        <!-- Button for Staff Patient -->
-                                                        <a href="addfaculty.php">
+                                                        <!-- Button for Faculty Patient -->
+                                                        <a href="{{ route('addFaculty') }}">
                                                             <button type="button"
                                                                 class="btn btn-primary btn-round ms-auto custom-button"
                                                                 id="addbutton">
                                                                 Faculty
                                                             </button>
                                                         </a>
-                                                        <a href="addstaff.php">
+                                                        <a href="{{ route('addStaff') }}">
                                                             <button type="button"
                                                                 class="btn btn-primary btn-round ms-auto custom-button"
                                                                 id="addbutton">
                                                                 Staff
                                                             </button>
                                                         </a>
-                                                        <a href="addextension.php">
+                                                        <a href="{{ route('addExtension') }}">
                                                             <button type="button"
                                                                 class="btn btn-primary btn-round ms-auto custom-button"
                                                                 id="addbutton">
@@ -124,64 +124,27 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php
-                                                $patientTables = new PatientTablesbyType($conn);
-                                                $faculties = $patientTables->getAllFaculties();
-                                                $counter = 1;
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>John Doe (123456)</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td>1</td>
+                                                    <td>John Doe (123456)</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td></td>
+                                                </tr>
 
-                                                foreach ($faculties as $faculty) {
-                                                    // Determine the status and color for each faculty
-                                                    $statusText = isset($faculty->faculty_status) && $faculty->faculty_status == 'Inactive' ? 'Disabled' : 'Enabled';
-                                                    $statusColor = isset($faculty->faculty_status) && $faculty->faculty_status == 'Inactive' ? '#ff6961' : '#77dd77';
-
-                                                    echo '<tr>';
-                                                    echo '<td>' . $counter++ . '</td>';
-                                                    echo '<td>' . $faculty->full_name . '</td>';
-                                                    echo '<td>' . $faculty->faculty_email . '</td>';
-                                                    echo '<td>' . $faculty->faculty_sex . '</td>';
-                                                    echo '<td>' . $faculty->faculty_college . ' - ' . $faculty->faculty_depart . '</td>';
-                                                    echo '<td>' . $faculty->faculty_role . '</td>';
-
-                                                    // Status span with dynamic color and text
-                                                    echo '<td>
-                                                                                            <span style="display: inline-block;
-                                                                                                        padding: 5px 10px;
-                                                                                                        border-radius: 50px;
-                                                                                                        background-color: ' .
-                                                        $statusColor .
-                                                        '; /* Color based on status */
-                                                                                                        color: white;
-                                                                                                        text-align: center;
-                                                                                                        min-width: 60px;">
-                                                                                                ' .
-                                                        $statusText .
-                                                        '
-                                                                                            </span>
-                                                                                        </td>';
-
-                                                    echo '<td>
-                                                                                        <div class="form-button-action">
-                                                                                            <button type="submit" class="btn btn-link btn-primary btn-lg viewButton"
-                                                                                                    data-id="' .
-                                                        $faculty->patient_id .
-                                                        '" data-type="' .
-                                                        $faculty->patient_type .
-                                                        '">
-                                                                                                <i class="fa fa-eye"></i>
-                                                                                            </button>
-                                                                                            <button type="submit" class="btn btn-link btn-primary btn-lg editButton"
-                                                                                                    data-id="' .
-                                                        $faculty->patient_id .
-                                                        '" data-type="' .
-                                                        $faculty->patient_type .
-                                                        '">
-                                                                                                <i class="fa fa-edit"></i>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </td>';
-                                                    echo '</tr>';
-                                                }
-                                                ?>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>J D (123456)</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td>1</td>
+                                                    <td>John Doe (123456)</td>
+                                                    <td>john.doe@example.com</td>
+                                                    <td></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

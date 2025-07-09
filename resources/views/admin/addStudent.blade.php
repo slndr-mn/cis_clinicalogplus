@@ -1,6 +1,7 @@
 @extends('admin.app')
 @section('title', 'Add Student Patient')
 @section('content')
+{{ Breadcrumbs::render('patientRecord.addstudent') }}
     <div class="container" id="content">
         <div class="page-inner">
             <div class="row">
@@ -17,7 +18,7 @@
                             <form id="studentForm" action="patientcontrol.php" method="POST" enctype="multipart/form-data"
                                 novalidate>
                                 <input id="admin_id" name="admin_id" type="hidden" class="form-control"
-                                    value="<?php echo htmlspecialchars($user_idnum, ENT_QUOTES, 'UTF-8'); ?>" />
+                                 />
                                 <!-- Name Fields -->
                                 <div class="row">
                                     <div class="col-md-3 mb-3">

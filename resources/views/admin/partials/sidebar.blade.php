@@ -40,7 +40,7 @@
                 </a>
               </li>
               <li class="nav-item" id="patientrec-item">
-                <a href="{{ route('admin.patientRecord') }}">
+                <a href="{{ route('patientRecord') }}">
                   <i class="fa fas fas fa-notes-medical"></i>
                   <p>Patient Record</p>
                 </a>
