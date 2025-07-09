@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>CIS: Clinicalog</title>
 
-    {{-- Vite Assets --}}
+    {{-- Laravel Vite Assets --}}
     @vite([
         'resources/css/app.css',
-        'resources/css/sidebar.css',
+        'resources/css/sidebar.css', 
         'resources/js/app.js'
     ])
 
@@ -29,24 +30,23 @@
                 ],
                 urls: ['{{ asset('assets/css/fonts.min.css') }}']
             },
-            active: () => sessionStorage.fonts = true
+            active: function () {
+                sessionStorage.fonts = true;
+            }
         });
     </script>
 
-    {{-- External Icon Libraries --}}
+    {{-- Icons --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
 
-    {{-- Bootstrap (Only CSS, defer JS below) --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- Kaiadmin Styles --}}
+    {{-- Kaiadmin CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}">
 
-    {{-- Sidebar Custom Styles --}}
+    {{-- Custom Sidebar Style --}}
     <style>
         .sidebar {
             transition: background 0.3s ease;
@@ -62,24 +62,58 @@
         .nav-item.active i {
             color: #fff;
         }
+
+@media (max-width: 991px) {
+    html.nav_open .sidebar {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+    }
+
+    .sidebar {
+        transform: translateX(-260px);
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        width: 260px;
+        height: 100vh;
+        background-color: #fff;
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+
     </style>
 </head>
 
 <body>
-    {{-- Header --}}
-    @include('admin.partials.header')
-
-    <div class="d-flex flex-column flex-lg-row">
+    <div class="wrapper">
         {{-- Sidebar --}}
         @include('admin.partials.sidebar')
 
-        {{-- Main Content --}}
-        <main class="p-4 flex-grow-1">
-            @yield('content')
-        </main>
+        {{-- Main Panel --}}
+        <div class="main-panel">
+            @include('admin.partials.header')
+
+            <main>
+                @yield('content')
+            </main>
+        </div>
     </div>
 
-    {{-- Bootstrap Bundle (JS) --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    {{-- Scripts --}}
+    {{-- jQuery (required by Bootstrap and possibly kaiadmin.js) --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {{-- Bootstrap JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- Kaiadmin JS --}}
+    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
 </body>
 </html>

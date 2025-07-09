@@ -93,3 +93,27 @@ body.sidebar-collapsed #sidebar .submenu {
 #sidebar {
     transition: width 0.3s ease;
 }
+
+@media (max-width: 991px) {
+    html.nav_open .sidebar {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+    }
+
+    .sidebar {
+        transform: translateX(-260px);
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        width: 260px;
+        height: 100vh;
+        background-color: #fff;
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 1;
+    }
+}

@@ -1,3 +1,4 @@
+<div class=main-header id= "header">
 <div class="main-header-logo">
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
@@ -8,9 +9,10 @@
             <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
             </button>
-            <button class="btn btn-toggle sidenav-toggler">
+            <button class="btn btn-toggle sidenav-toggler d-block d-lg-none">
                 <i class="gg-menu-left"></i>
             </button>
+
         </div>
         <button class="topbar-toggler more">
             <i class="gg-more-vertical-alt"></i>
@@ -34,6 +36,7 @@
         </nav>
 
         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+
             <!-- Mobile Search -->
             <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
@@ -136,30 +139,65 @@
         </ul>
     </div>
 </nav>
-
-<!-- Logout SweetAlert -->
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const logoutLink = document.getElementById("logoutLink");
-        if (logoutLink) {
-            logoutLink.addEventListener("click", function (event) {
-                event.preventDefault();
-                Swal.fire({
-                    title: "Are you sure you want to logout?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, logout",
-                    cancelButtonText: "Cancel"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Simulated logout
-                        window.location.href = "#";
-                    }
-                });
+        let nav_open = 0;
+        let mini_sidebar = 0;
+
+        const sidenavToggler = document.querySelector('.sidenav-toggler');
+        const toggleSidebarBtn = document.querySelector('.toggle-sidebar');
+        const html = document.documentElement;
+        const wrapper = document.querySelector('.wrapper');
+
+        // Set initial state if already minimized
+        if (wrapper.classList.contains('sidebar_minimize')) {
+            mini_sidebar = 1;
+            if (toggleSidebarBtn) {
+                toggleSidebarBtn.classList.add('toggled');
+                toggleSidebarBtn.innerHTML = '<i class="gg-more-vertical-alt"></i>';
+            }
+        }
+
+        // Handle sidenav-toggler click (hamburger for mobile)
+        if (sidenavToggler) {
+            sidenavToggler.addEventListener('click', function () {
+                if (nav_open === 1) {
+                    html.classList.remove('nav_open');
+                    this.classList.remove('toggled');
+                    nav_open = 0;
+                } else {
+                    html.classList.add('nav_open');
+                    this.classList.add('toggled');
+                    nav_open = 1;
+                }
             });
         }
+
+        // Handle toggle-sidebar button (minimize on desktop)
+        if (toggleSidebarBtn) {
+            toggleSidebarBtn.addEventListener('click', function () {
+                if (mini_sidebar === 1) {
+                    wrapper.classList.remove('sidebar_minimize');
+                    this.classList.remove('toggled');
+                    this.innerHTML = '<i class="gg-menu-right"></i>';
+                    mini_sidebar = 0;
+                } else {
+                    wrapper.classList.add('sidebar_minimize');
+                    this.classList.add('toggled');
+                    this.innerHTML = '<i class="gg-more-vertical-alt"></i>';
+                    mini_sidebar = 1;
+                }
+                window.dispatchEvent(new Event('resize')); // force reflow
+            });
+        }
+
+        // Optional: Handle topbar-toggler
+        document.querySelectorAll('.topbar-toggler').forEach(btn => {
+            btn.addEventListener('click', function () {
+                html.classList.toggle('topbar_open');
+                this.classList.toggle('toggled');
+            });
+        });
     });
 </script>
-
