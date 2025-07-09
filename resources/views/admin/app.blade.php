@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -46,6 +47,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}">
 
+
     {{-- Custom Sidebar Style --}}
     <style>
         .sidebar {
@@ -65,7 +67,36 @@
 
         
     </style>
+
+    {{-- CSS.GG Icons (no need to include twice) --}}
+    <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
+    
+    {{-- Bootstrap --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- jQuery (already included in most Laravel admin themes) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+      <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+
 </head>
+@stack('scripts')
 
 <body>
     <div class="wrapper">
@@ -92,4 +123,5 @@
     {{-- Kaiadmin JS --}}
     <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
 </body>
+
 </html>

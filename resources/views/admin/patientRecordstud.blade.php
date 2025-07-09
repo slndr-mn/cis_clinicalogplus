@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title', 'Patient Record')
+@section('title', 'Patient Records - Student')
 @section('content')
     <div class="container" id="content">
         <div class="page-inner">
@@ -10,10 +10,10 @@
                             <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border"
                                 role="tablist">
                                 <li>
-                                    <a class="nav-link active" href="patient-record.php" role="tab">All</a>
+                                    <a class="nav-link" href="patient-record.php" role="tab">All</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordstud.php" role="tab">Student</a>
+                                    <a class="nav-link  active" href="patient-recordstud.php" role="tab">Student</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="patient-recordfac.php" role="tab">Faculty</a>
@@ -93,17 +93,16 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="table-responsive">
                                     <table id="add-patient" class="table table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
+                                                <th>Name & ID</th>
                                                 <th>Email</th>
                                                 <th>Sex</th>
-                                                <th>Type</th>
+                                                <th>Program & Major</th>
+                                                <th>Year & Section</th>
                                                 <th>Status</th>
                                                 <th style="width: 10%">Action</th>
                                             </tr>
@@ -111,17 +110,74 @@
                                         <tfoot>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
+                                                <th>Name & ID</th>
                                                 <th>Email</th>
                                                 <th>Sex</th>
-                                                <th>Type</th>
+                                                <th>Program & Major</th>
+                                                <th>Year & Section</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
+                                            <?php
+                                            $patientTables = new PatientTablesbyType($conn);
+                                            $students = $patientTables->getAllStudents();
+                                            $counter = 1;
 
+                                            foreach ($students as $student) {
+                                                // Determine the status and color for each student
+                                                $statusText = isset($student->student_status) && $student->student_status == 'Inactive' ? 'Disabled' : 'Enabled';
+                                                $statusColor = isset($student->student_status) && $student->student_status == 'Inactive' ? '#ff6961' : '#77dd77';
+
+                                                echo '<tr>';
+                                                echo '<td>' . $counter++ . '</td>';
+                                                echo '<td>' . $student->full_name . '</td>';
+                                                echo '<td>' . $student->student_email . '</td>';
+                                                echo '<td>' . $student->student_sex . '</td>';
+                                                echo '<td>' . $student->student_program . ' - ' . $student->student_major . '</td>';
+                                                echo '<td>' . $student->student_year . ' - ' . $student->student_section . '</td>';
+
+                                                // Status span with dynamic color and text
+                                                echo '<td>
+                                                                                    <span style="display: inline-block;
+                                                                                                padding: 5px 10px;
+                                                                                                border-radius: 50px;
+                                                                                                background-color: ' .
+                                                    $statusColor .
+                                                    '; /* Color based on status */
+                                                                                                color: white;
+                                                                                                text-align: center;
+                                                                                                min-width: 60px;">
+                                                                                        ' .
+                                                    $statusText .
+                                                    '
+                                                                                    </span>
+                                                                                  </td>';
+
+                                                echo '<td>
+                                                                                <div class="form-button-action">
+                                                                                    <button type="submit" class="btn btn-link btn-primary btn-lg viewButton"
+                                                                                            data-id="' .
+                                                    $student->patient_id .
+                                                    '" data-type="' .
+                                                    $student->patient_type .
+                                                    '">
+                                                                                        <i class="fa fa-eye"></i>
+                                                                                    </button>
+                                                                                    <button type="submit" class="btn btn-link btn-primary btn-lg editButton"
+                                                                                            data-id="' .
+                                                    $student->patient_id .
+                                                    '" data-type="' .
+                                                    $student->patient_type .
+                                                    '">
+                                                                                        <i class="fa fa-edit"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </td>';
+                                                echo '</tr>';
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,6 +187,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     @push('scripts')

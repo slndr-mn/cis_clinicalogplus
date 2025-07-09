@@ -38,7 +38,6 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/admin/logout', [AuthController::class, 'adminLogout'])->name('admin.logout');
 });
 
-
 // Admin dashboard routes (requires guard:admin)
 Route::middleware('auth:patient')->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
@@ -56,9 +55,9 @@ Route::get('/medicine-record', function () {
     return view('admin.medicineRecord');
 })->name('medicineRecord');
 
-
 Route::get('/staff-users', function () {
     return view('admin.staffuser');
 })->name('admin.staffuser');
+
 
 
