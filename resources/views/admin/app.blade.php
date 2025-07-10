@@ -90,38 +90,32 @@
     <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
 
     <!-- Kaiadmin JS -->
-    <script src="../assets/js/kaiadmin.min.js"></script>
-      <script src="../assets/js/kaiadmin.min.js"></script>
+    {{-- <script src="../assets/js/kaiadmin.min.js"></script> --}}
+    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
+    {{-- <script src="../assets/js/kaiadmin.js"></script> --}}
+    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
+
 
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
 
 </head>
-@stack('scripts')
 
-<body>
-    <div class="wrapper">
-        {{-- Sidebar --}}
-        @include('admin.partials.sidebar')
+        <body>
+            <div class="wrapper">
+                {{-- Sidebar --}}
+                @include('admin.partials.sidebar')
 
-        {{-- Main Panel --}}
-        <div class="main-panel">
-            @include('admin.partials.header')
-
-            <main>
-                @yield('content')
-            </main>
+                {{-- Main Panel --}}
+                <div class="main-panel">
+                    @include('admin.partials.header')
+                <div class="container" id="content">
+                    <main>
+                        @yield('content')
+                    </main>
+                </div>
+            </div>
         </div>
-    </div>
 
-    {{-- Scripts --}}
-    {{-- jQuery (required by Bootstrap and possibly kaiadmin.js) --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    {{-- Bootstrap JS --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    {{-- Kaiadmin JS --}}
-    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
-</body>
+        </body>
 
 </html>
