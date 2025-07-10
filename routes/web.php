@@ -92,6 +92,26 @@ Route::get('/addExtension', function () {
     return view('admin.addExtension');
 })->name('addExtension');
 
+//Route for Viewing Patient Profile Student
+Route::get('/patientProfilestud', function () {
+    return view('admin.patientProfilestud');
+})->name('patientProfilestud');
+
+// Route for Viewing Patient Profile Faculty
+Route::get('/patientProfilefaculty', function () {
+    return view('admin.patientProfilefaculty');
+})->name('patientProfilefaculty');
+
+// Route for Viewing Patient Profile Staff
+Route::get('/patientProfilestaff', function () {
+    return view('admin.patientProfilestaff');
+})->name('patientProfilestaff');
+
+// Route for Viewing Patient Profile Extension
+Route::get('/patientProfileextension', function () {
+    return view('admin.patientProfileextension');
+})->name('patientProfileextension');
+
 // Route for Medicine Record
 Route::get('/medicine-record', function () {
     return view('admin.medicineRecord');

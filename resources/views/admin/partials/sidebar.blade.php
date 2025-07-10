@@ -46,7 +46,7 @@
                 </a>
               </li>
               <li class="nav-item" id="patientrec-item">
-                <a href="addconsultation.php">
+                <a href="{{ route('patientProfileextension') }}">
                   <i class=" fas fa-stethoscope"></i>
                   <p>Consultations</p>
                 </a>
