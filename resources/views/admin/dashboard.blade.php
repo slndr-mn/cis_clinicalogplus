@@ -3,6 +3,7 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
+
                 <!-- Main Content -->
             <div class="container" id="content"> 
                 <div class="page-inner">
