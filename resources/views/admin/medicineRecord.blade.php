@@ -1,38 +1,40 @@
 @extends('admin.app')
-
+@section('title', 'Medicine')
 @section('content')
-<div class="container mt-4">
-    <div class="row">
-        <!-- Medicine Form Card -->
-        <div class="col-md-4">
-            <div class="card card-equal-height">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title">Medicine Details</h4>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form id="medicineForm" method="POST">
-                        @csrf
-                        <input id="admin_id" name="admin_id" type="hidden" class="form-control" value="{{ auth()->user()->id ?? '' }}" />
-                        <input type="hidden" id="medicineId" name="medicineId" value="" />
 
-                        <div class="form-group mb-3">
-                            <label for="medicineName">Medicine Name</label>
-                            <input type="text" id="medicineName" name="medicineName" class="form-control" placeholder="Enter medicine name" required />
+    <div class="container" id="content">
+        <div class="page-inner">
+                <div class="row">
+                    <!-- Medicine Form Card -->
+                    <div class="col-md-4">
+                        <div class="card card-equal-height">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title">Medicine Details</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="medicineForm" method="POST">
+                                    @csrf
+                                    <input id="admin_id" name="admin_id" type="hidden" class="form-control" value="{{ auth()->user()->id ?? '' }}" />
+                                    <input type="hidden" id="medicineId" name="medicineId" value="" />
+
+                                    <div class="form-group mb-3">
+                                        <label for="medicineName">Medicine Name</label>
+                                        <input type="text" id="medicineName" name="medicineName" class="form-control" placeholder="Enter medicine name" required />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="medicineCategory">Category</label>
+                                        <input type="text" id="medicineCategory" name="medicineCategory" class="form-control" placeholder="Enter category" required />
+                                    </div>
+                                    <div class="modal-footer border-0 mt-auto">
+                                        <button type="submit" class="btn btn-primary" id="addmed" name="addmed">Submit</button>
+                                        <button type="reset" class="btn btn-secondary ms-2">Clear</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="medicineCategory">Category</label>
-                            <input type="text" id="medicineCategory" name="medicineCategory" class="form-control" placeholder="Enter category" required />
-                        </div>
-                        <div class="modal-footer border-0 mt-auto">
-                            <button type="submit" class="btn btn-primary" id="addmed" name="addmed">Submit</button>
-                            <button type="reset" class="btn btn-secondary ms-2">Clear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    </div>
 
         <!-- Medicines Table Card -->
         <div class="col-md-8">
@@ -329,6 +331,8 @@
         </div>
     </div>
 </div>
+
+
 
 @include('admin.partials.modals.add-medicine-stock')
 @include('admin.partials.modals.edit-medicine-stock')
