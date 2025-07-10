@@ -148,15 +148,16 @@
                                         <thead>
                                             <tr>
                                                 <th>File Name</th>
-                                                <th>Date & Time Added</th>
-                                                <th style="width: 10%">Action</th>
+                                                <th style="width: 50%">Action</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>MedicalRecord1.pdf</td>
-                                                <td>2025-07-10 10:00</td>
+                                                <td>
+                                                    MedicalRecord1.pdf<br>
+                                                    <span style="color: #888; font-style: italic;">2025-07-10 10:00</span>
+                                                </td>
                                                 <td>
                                                     <button type="button"
                                                         class="btn btn-link btn-success btn-lg viewMedRecordButton"
@@ -170,8 +171,10 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>MedicalRecord2.pdf</td>
-                                                <td>2025-07-09 14:30</td>
+                                                <td>
+                                                    MedicalRecord2.pdf<br>
+                                                    <span style="color: #888; font-style: italic;">2025-07-09 14:30</span>
+                                                </td>
                                                 <td>
                                                     <button type="button"
                                                         class="btn btn-link btn-success btn-lg viewMedRecordButton"
@@ -211,19 +214,19 @@
                                     <table id="add-con" class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Diagnosis</th>
-                                                <th>Prescribed Medicine (Quantity)</th>
-                                                <th style="width: 10%">Action</th>
+                                                <th>Consultation</th>
+                                                <th style="width: 50%">Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                         </tfoot>
                                         <tbody>
                                             <tr>
-                                                <td>2025-07-10</td>
-                                                <td>Exteension 1</td>
-                                                <td>Paracetamol (10)</td>
+                                                <td>
+                                                    Exteension 1<br>
+                                                    <span style="color: #888;">Paracetamol (10)</span><br>
+                                                    <span style="color: #888; font-style: italic;">2025-07-10</span>
+                                                </td>
                                                 <td>
                                                     <button type="button"
                                                         class="btn btn-link btn-success btn-lg viewConButton"
@@ -237,9 +240,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>2025-07-09</td>
-                                                <td>Diagnosis 2</td>
-                                                <td>Ibuprofen (5)</td>
+                                                <td>
+                                                    Diagnosis 2<br>
+                                                    <span style="color: #888;">Ibuprofen (5)</span><br>
+                                                    <span style="color: #888; font-style: italic;">2025-07-09</span>
+                                                </td>
                                                 <td>
                                                     <button type="button"
                                                         class="btn btn-link btn-success btn-lg viewConButton"
@@ -275,7 +280,7 @@
                     ], // Sort by Date column (1st column)
                     columnDefs: [{
                         orderable: false,
-                        targets: [2] // Disable sort only on Action column (4th column, index 3)
+                        targets: [1] // Disable sort only on Action column (4th column, index 3)
                     }],
                     paging: true, // Enable pagination
                     pageLength: 5, // Show 5 entries per page by default
@@ -289,7 +294,7 @@
                     ], // Sort by Date column (1st column)
                     columnDefs: [{
                         orderable: false,
-                        targets: [3] // Disable sort only on Action column (4th column, index 3)
+                        targets: [1] // Disable sort only on Action column (4th column, index 3)
                     }],
                     paging: true, // Enable pagination
                     pageLength: 5, // Show 5 entries per page by default

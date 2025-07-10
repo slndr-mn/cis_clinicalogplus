@@ -3,7 +3,7 @@
 @section('content')
     <!-- Main Content -->
 
-    <div class="container" >
+    <div class="container">
         <div class="page-inner">
             <div class=row>
                 <div class="mb-3">
@@ -121,143 +121,149 @@
                         </div>
                     </div>
                     <!-- Start Medical Record Table Section -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card card-equal-height">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="card-title">List of Medical Records</h4>
-                                    <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
-                                        data-bs-target="#addMedicalRecModal">
-                                        <i class="fa fa-plus"></i>
-                                        Add Medical Record
-                                    </button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-equal-height">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="card-title">List of Medical Records</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
+                                            data-bs-target="#addMedicalRecModal">
+                                            <i class="fa fa-plus"></i>
+                                            Add Medical Record
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                @include('admin.partials.modals.add-medical-records')
-                                @include('admin.partials.modals.edit-medical-records')
-                                <div class="table-responsive">
-                                    <table id="addmedrecord" class="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>File Name</th>
-                                                <th>Date & Time Added</th>
-                                                <th style="width: 10%">Action</th>
+                                <div class="card-body">
+                                    @include('admin.partials.modals.add-medical-records')
+                                    @include('admin.partials.modals.edit-medical-records')
+                                    <div class="table-responsive">
+                                        <table id="addmedrecord" class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>File Name</th>
+                                                    <th style="width: 50%">Action</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>MedicalRecord1.pdf</td>
-                                                <td>2025-07-10 10:00</td>
-                                                <td>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-success btn-lg viewMedRecordButton"
-                                                        title="View"><i class="fa fa-eye"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-primary btn-lg editMedRecordButton"
-                                                        title="Edit"><i class="fa fa-edit"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-danger btn-lg deleteMedRecordButton"
-                                                        title="Delete"><i class="fa fa-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>MedicalRecord2.pdf</td>
-                                                <td>2025-07-09 14:30</td>
-                                                <td>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-success btn-lg viewMedRecordButton"
-                                                        title="View"><i class="fa fa-eye"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-primary btn-lg editMedRecordButton"
-                                                        title="Edit"><i class="fa fa-edit"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-danger btn-lg deleteMedRecordButton"
-                                                        title="Delete"><i class="fa fa-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        MedicalRecord1.pdf<br>
+                                                        <span style="color: #888; font-style: italic;">2025-07-10
+                                                            10:00</span>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-success btn-lg viewMedRecordButton"
+                                                            title="View"><i class="fa fa-eye"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-primary btn-lg editMedRecordButton"
+                                                            title="Edit"><i class="fa fa-edit"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-danger btn-lg deleteMedRecordButton"
+                                                            title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        MedicalRecord2.pdf<br>
+                                                        <span style="color: #888; font-style: italic;">2025-07-09
+                                                            14:30</span>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-success btn-lg viewMedRecordButton"
+                                                            title="View"><i class="fa fa-eye"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-primary btn-lg editMedRecordButton"
+                                                            title="Edit"><i class="fa fa-edit"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-danger btn-lg deleteMedRecordButton"
+                                                            title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-equal-height">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="card-title">List of Consultations</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
+                                            data-bs-target="#addConsultationModal">
+                                            <i class="fa fa-plus"></i>
+                                            Add Consultation
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @include('admin.partials.modals.add-consultation')
+                                    @include('admin.partials.modals.edit-consultation')
+                                    {{-- Include the consultation details modal --}}
+                                    @include('admin.partials.modals.consultation-details')
+                                    <div class="table-responsive">
+                                        <table id="add-con" class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Consultation</th>
+                                                    <th style="width: 50%">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        Exteension 1<br>
+                                                        <span style="color: #888;">Paracetamol (10)</span><br>
+                                                        <span style="color: #888; font-style: italic;">2025-07-10</span>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-success btn-lg viewConButton"
+                                                            title="View"><i class="fa fa-eye"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-primary btn-lg editConButton"
+                                                            title="Edit"><i class="fa fa-edit"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-danger btn-lg deleteConButton"
+                                                            title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Diagnosis 2<br>
+                                                        <span style="color: #888;">Ibuprofen (5)</span><br>
+                                                        <span style="color: #888; font-style: italic;">2025-07-09</span>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-success btn-lg viewConButton"
+                                                            title="View"><i class="fa fa-eye"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-primary btn-lg editConButton"
+                                                            title="Edit"><i class="fa fa-edit"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-link btn-danger btn-lg deleteConButton"
+                                                            title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card card-equal-height">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="card-title">List of Consultations</h4>
-                                    <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
-                                        data-bs-target="#addConsultationModal">
-                                        <i class="fa fa-plus"></i>
-                                        Add Consultation
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                @include('admin.partials.modals.add-consultation')
-                                @include('admin.partials.modals.edit-consultation')
-                                {{-- Include the consultation details modal --}}
-                                @include('admin.partials.modals.consultation-details')
-                                <div class="table-responsive">
-                                    <table id="add-con" class="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Diagnosis</th>
-                                                <th>Prescribed Medicine (Quantity)</th>
-                                                <th style="width: 10%">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>2025-07-10</td>
-                                                <td>Staff 1</td>
-                                                <td>Paracetamol (10)</td>
-                                                <td>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-success btn-lg viewConButton"
-                                                        title="View"><i class="fa fa-eye"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-primary btn-lg editConButton"
-                                                        title="Edit"><i class="fa fa-edit"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-danger btn-lg deleteConButton"
-                                                        title="Delete"><i class="fa fa-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2025-07-09</td>
-                                                <td>Diagnosis 2</td>
-                                                <td>Ibuprofen (5)</td>
-                                                <td>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-success btn-lg viewConButton"
-                                                        title="View"><i class="fa fa-eye"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-primary btn-lg editConButton"
-                                                        title="Edit"><i class="fa fa-edit"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-link btn-danger btn-lg deleteConButton"
-                                                        title="Delete"><i class="fa fa-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {{-- End of medical record and consultation tables --}}
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     @push('scripts')
         <script>
@@ -269,7 +275,7 @@
                     ], // Sort by Date column (1st column)
                     columnDefs: [{
                         orderable: false,
-                        targets: [2] // Disable sort only on Action column (4th column, index 3)
+                        targets: [1] // Disable sort only on Action column (4th column, index 3)
                     }],
                     paging: true, // Enable pagination
                     pageLength: 5, // Show 5 entries per page by default
@@ -283,7 +289,7 @@
                     ], // Sort by Date column (1st column)
                     columnDefs: [{
                         orderable: false,
-                        targets: [3] // Disable sort only on Action column (4th column, index 3)
+                        targets: [1] // Disable sort only on Action column (4th column, index 3)
                     }],
                     paging: true, // Enable pagination
                     pageLength: 5, // Show 5 entries per page by default
