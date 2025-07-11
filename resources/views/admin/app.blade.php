@@ -17,7 +17,7 @@
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('ClinicaLog.ico') }}" type="image/x-icon" />
 
-    {{-- Fonts --}}
+    {{-- WebFont Loader --}}
     <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
@@ -42,11 +42,13 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
 
-    {{-- Kaiadmin CSS --}}
+    {{-- Bootstrap & Kaiadmin CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}">
 
+    {{-- DataTables CSS --}}
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
 
     {{-- Custom Sidebar Style --}}
     <style>
@@ -64,43 +66,10 @@
         .nav-item.active i {
             color: #fff;
         }
-
-        
     </style>
-
-    {{-- CSS.GG Icons (no need to include twice) --}}
-    <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
-    
-    {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- DataTables CSS -->
-    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
-
-    <!-- jQuery (already included in most Laravel admin themes) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
-    <!-- jQuery Scrollbar -->
-    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Kaiadmin JS -->
-    {{-- <script src="../assets/js/kaiadmin.min.js"></script> --}}
-    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
-    {{-- <script src="../assets/js/kaiadmin.js"></script> --}}
-    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
-
-
-    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
-
 </head>
 
-        <body>
+ <body>
             <div class="wrapper">
                 {{-- Sidebar --}}
                 @include('admin.partials.sidebar')
@@ -116,6 +85,23 @@
             </div>
         </div>
 
-        </body>
+    {{-- jQuery (must come first before other scripts) --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {{-- Bootstrap Bundle --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- DataTables --}}
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    {{-- jQuery Scrollbar --}}
+    <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+
+    {{-- Kaiadmin Core --}}
+    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
+
+    {{-- Optional: DataTables Plugin (if needed) --}}
+    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
+</body>
 
 </html>
