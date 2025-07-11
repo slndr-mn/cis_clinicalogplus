@@ -1,3 +1,9 @@
+<style>
+#added-medicine-list .badge.rounded-pill.d-inline-flex.align-items-center:hover {
+    border-color: #e75480 !important;
+    transition: border-color 0.2s;
+}
+</style>
 <!-- Add Consultation Modal -->
 <div class="modal fade" id="addConsultationModal" tabindex="-1" role="dialog" aria-labelledby="addConsultationModalLabel"
     aria-hidden="true">
@@ -63,13 +69,10 @@
                                         $list.empty();
                                         addedMedicines.forEach(function(med, idx) {
                                             $list.append(
-                                                '<span class="badge rounded-pill me-2 d-inline-flex align-items-center" style="background:#fff;color:#888;font-size:1rem;padding:0.6em 1em 0.6em 1em;border:1px solid #ccc;">' +
-                                                med.name +
-                                                ' <span class="bg-white text-secondary ms-2 px-2 py-1 rounded-pill" style="font-size:0.9em;border:1px solid #eee;">' +
-                                                med.qty + '</span>' +
-                                                '<button type="button" class="btn btn-sm btn-close ms-2 remove-medicine" data-idx="' +
-                                                idx + '" style="font-size:0.9em;filter:invert(0.5);"></button>' +
-                                                '</span>'
+                                                '<span class="badge rounded-pill me-1 d-inline-flex align-items-center" style="background:#fff;color:#888;font-size:0.92rem;padding:0.35em 0.8em 0.35em 0.8em;border:1px solid #ccc;">'
+                                                + med.name + ' <span class="bg-white text-secondary ms-2 px-2 py-1 rounded-pill" style="font-size:0.85em;border:none;">' + med.qty + '</span>'
+                                                + '<button type="button" class="btn btn-sm btn-close ms-2 remove-medicine" data-idx="' + idx + '" style="font-size:0.85em;filter:invert(0.5);"></button>'
+                                                + '</span>'
                                             );
                                         });
                                     }
