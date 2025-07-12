@@ -1,4 +1,5 @@
 <div class=main-header id= "header">
+
     <div class="main-header-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
@@ -148,6 +149,7 @@
     </nav>
 </div>
 <script>
+
     document.addEventListener('DOMContentLoaded', function() {
         const html = document.documentElement;
         const wrapper = document.querySelector('.wrapper');
@@ -168,6 +170,16 @@
                     'gg-more-vertical-alt' :
                     'gg-menu-right';
             });
+
+    // Collapse sidebar (minimize) button
+    document.querySelectorAll('.btn.btn-toggle.sidenav-toggler').forEach(btn => {
+        btn.addEventListener('click', function () {
+            wrapper.classList.toggle('sidebar_minimize');
+            const icon = this.querySelector('i');
+            icon.className = wrapper.classList.contains('sidebar_minimize') 
+                ? 'gg-more-vertical-alt' 
+                : 'gg-menu-right';
+
         });
 
         // 3-dot toggler
@@ -190,6 +202,13 @@
                 document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.remove(
                     'toggled'));
             }
+
+    // Topbar toggler (mobile)
+    document.querySelectorAll('.topbar-toggler').forEach(btn => {
+        btn.addEventListener('click', function () {
+            html.classList.toggle('topbar_open');
+            this.classList.toggle('toggled');
+
         });
     });
 </script>
@@ -210,6 +229,13 @@
                 const isDark = body.classList.contains('dark-mode');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
+    // Click-outside-to-close behavior (for mobile sidebar)
+    document.addEventListener('click', function (event) {
+        const isClickInsideSidebar = sidebar?.contains(event.target);
+        const isClickOnToggler = event.target.closest('.sidenav-toggler');
+        const isMobile = window.innerWidth <= 991;
+
+
                 // Optional: toggle icon
                 const icon = this.querySelector('i');
                 if (icon) {
@@ -219,4 +245,26 @@
             });
         }
     });
+
+
+
+    // ✅ Sidebar toggle on logo click (mobile)
+    if (logo) {
+        logo.addEventListener('click', function () {
+            html.classList.toggle('nav_open');
+            document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.toggle('toggled'));
+        });
+    }
+});
+
 </script>
+
+
+<style>
+@media (max-width: 991.98px) {
+    .sidenav-toggler, .nav-toggle {
+        display: none !important;
+    }
+}
+
+</style>

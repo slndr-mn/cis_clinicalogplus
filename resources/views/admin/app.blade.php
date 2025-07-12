@@ -23,6 +23,7 @@
             margin-left: 70px;
         }
     </style>
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -32,7 +33,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>CIS: Clinicalog</title>
-
         {{-- Laravel Vite Assets --}}
         @vite(['resources/css/app.css', 'resources/css/sidebar.css', 'resources/js/app.js'])
 
@@ -44,7 +44,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
         <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
-
 
 
         {{-- Custom Sidebar Style --}}
@@ -128,7 +127,6 @@
         <div class="wrapper">
             {{-- Sidebar --}}
             @include('admin.partials.sidebar')
-
             {{-- Main Panel --}}
             <div class="main-panel">
                 @include('admin.partials.header')
