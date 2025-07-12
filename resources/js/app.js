@@ -10,7 +10,7 @@ const mount = (selector, component) => {
     if (el) {
         createApp(component).mount(el);
     }
-};
+}; 
 
 mount('#sidebar', Sidebar);
 mount('#header', Header);

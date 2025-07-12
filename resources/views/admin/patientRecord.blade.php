@@ -12,19 +12,19 @@
                             <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border"
                                 role="tablist">
                                 <li>
-                                    <a href="{{ route('patientRecord') }}" class="nav-link">All</a>
+                                    <a href="{{ route('patientRecord') }}" class="nav-link nav-pattable">All</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('patientRecordstud') }}" class="nav-link">Student</a>
+                                    <a href="{{ route('patientRecordstud') }}" class="nav-link nav-pattable">Student</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('patientRecordfac') }}" class="nav-link">Faculty</a>
+                                    <a href="{{ route('patientRecordfac') }}" class="nav-link nav-pattable">Faculty</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('patientRecordstaff') }}" class="nav-link">Staff</a>
+                                    <a href="{{ route('patientRecordstaff') }}" class="nav-link nav-pattable">Staff</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('patientRecordexten') }}" class="nav-link">Extension</a>
+                                    <a href="{{ route('patientRecordexten') }}" class="nav-link nav-pattable">Extension</a>
                                 </li>
                             </ul>
                         </div>
