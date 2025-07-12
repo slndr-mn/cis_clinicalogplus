@@ -21,7 +21,7 @@
               <div class="profile-display">
                 <img id="currentProfile" src="" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;" />
                 <br>
-                <label for="editprofile" class="btn btn-outline-primary mt-3">Edit Profile</label>
+                <label for="editprofile" class="btn btn-primary mt-3">Edit Profile</label>
                 <input id="editprofile" name="editprofile" type="file" class="form-control d-none" accept=".png, .jpg, .jpeg" />
               </div>
             </div>

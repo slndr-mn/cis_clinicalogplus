@@ -1,0 +1,79 @@
+body.dark-mode {
+    background-color: #212529 !important;
+    shadow: none;
+}
+
+.dark-mode .navbar,
+.dark-mode .dropdown-menu,
+.dark-mode .modal-content, 
+.dark-mode .card,
+.dark-mode .table,
+.dark-mode .sidebar,
+.dark-mode .input-group {
+    background-color: #343a40 !important;
+    color: #e0e0e0 !important;
+    border-color: #343a40 !important;
+}
+
+.dark-mode .table th,
+.dark-mode .table td,
+.dark-mode .page-item {
+    background-color: #343a40 !important;
+    color: #f8f9fa !important;
+}
+
+.dark-mode .form-group-default,
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
+    border-color: #2c2e30ff !important;
+}
+
+.dark-mode .card-title,
+.dark-mode .card-category,
+.dark-mode label,
+.dark-mode .dropdown-title,
+.dark-mode .see-all,
+.dark-mode .notif-content,
+.dark-mode .time,
+.dark-mode .text-muted,
+.dark-mode .dropdown-item,
+.dark-mode .dropdown-divider {
+    color: #ddd7d7 !important;
+}
+
+.dark-mode .btn-primary,
+.dark-mode .nav-pattable {
+    background-color: #db6079 !important;
+    border-color: #db6079 !important;
+    color: #f8f9fa !important;
+}
+
+.dark-mode .btn-search {
+    background-color: #212529 !important;
+}
+
+.dark-mode .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .bg-light {
+    background-color: #1f1f1f !important;
+}
+
+.dark-mode .text-dark {
+    color: #ffffff !important;
+}
+
+.dark-mode .navbar-nav .topbar-user .profile-pic {
+    color: #ddd7d7 !important;
+}
+
+.dark-mode .card {
+    box-shadow: none;
+}
+
+.dark-mode h1 {
+    text-shadow: none;
+}

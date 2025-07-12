@@ -22,7 +22,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="medicineName">Medicine Name</label>
-                                    <input type="text"id="medicineName" name="medicineName" class="form-control"
+                                    <input type="text"id="medicineName" name="medicineName" class="form-control" 
                                         value="{{ old('medicineName') }}" placeholder="Enter medicine name" required>
                                     @error('medicineName')
                                         <div class="text-danger">{{ $message }}</div>
@@ -116,7 +116,7 @@
                                             <td>{{ $totalQty }}</td>
                                             <td>
                                                 <button type="button"
-                                                    class="btn btn-link btn-primary btn-lg editMedButton">
+                                                    class="btn btn-link btn-lg editMedButton">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -288,7 +288,7 @@
                                                 <td>
                                                     <div class="form-button-action">
                                                         <button type="button"
-                                                            class="btn btn-link btn-primary btn-lg editButton">
+                                                            class="btn btn-link btn-lg editButton">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                          <button class="btn btn-link btn-danger btn-lg removeButton"

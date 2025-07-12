@@ -85,7 +85,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-1">
-                                                        <button class="btn btn-link btn-primary btn-lg editButton"
+                                                        <button class="btn btn-link btn-lg editButton"
                                                             data-bs-toggle="modal" data-bs-target="#editRowModal"
                                                             data-adminid="{{ $adminuser->user_id }}"
                                                             data-profile="{{ $adminuser->user_profile }}"
