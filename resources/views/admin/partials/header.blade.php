@@ -2,9 +2,10 @@
 <div class="main-header-logo">
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
-        <a href="{{ url('admin/dashboard') }}" class="logo">
-            <img src="{{ asset('img/Clinicalog.png') }}" alt="navbar brand" class="navbar-brand" height="60" />
+       <a href="javascript:void(0);" class="logo">
+            <img id="logo-toggle" src="{{ asset('img/Clinicalog.png') }}" alt="navbar brand" class="navbar-brand" height="60" />
         </a>
+
         <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -144,15 +145,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const html = document.documentElement;
     const wrapper = document.querySelector('.wrapper');
     const sidebar = document.getElementById('sidebar');
+    const logo = document.getElementById('logo-toggle');
 
-    document.querySelectorAll('.sidenav-toggler').forEach(btn => {
+    // Sidebar toggler button
+    document.querySelectorAll('.btn.btn-toggle.toggle-sidebar').forEach(btn => {
         btn.addEventListener('click', function () {
             html.classList.toggle('nav_open');
             this.classList.toggle('toggled');
         });
     });
 
-    document.querySelectorAll('.toggle-sidebar').forEach(btn => {
+    // Collapse sidebar (minimize) button
+    document.querySelectorAll('.btn.btn-toggle.sidenav-toggler').forEach(btn => {
         btn.addEventListener('click', function () {
             wrapper.classList.toggle('sidebar_minimize');
             const icon = this.querySelector('i');
@@ -162,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 3-dot toggler
+    // Topbar toggler (mobile)
     document.querySelectorAll('.topbar-toggler').forEach(btn => {
         btn.addEventListener('click', function () {
             html.classList.toggle('topbar_open');
@@ -170,9 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Auto-close sidebar on mobile when clicking outside
+    // Click-outside-to-close behavior (for mobile sidebar)
     document.addEventListener('click', function (event) {
-        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickInsideSidebar = sidebar?.contains(event.target);
         const isClickOnToggler = event.target.closest('.sidenav-toggler');
         const isMobile = window.innerWidth <= 991;
 
@@ -181,5 +185,23 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.remove('toggled'));
         }
     });
+
+    // ✅ Sidebar toggle on logo click (mobile)
+    if (logo) {
+        logo.addEventListener('click', function () {
+            html.classList.toggle('nav_open');
+            document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.toggle('toggled'));
+        });
+    }
 });
 </script>
+
+
+<style>
+@media (max-width: 991.98px) {
+    .sidenav-toggler, .nav-toggle {
+        display: none !important;
+    }
+}
+
+</style>
