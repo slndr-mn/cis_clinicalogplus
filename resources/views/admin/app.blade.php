@@ -22,8 +22,9 @@
     </style>
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,35 +40,12 @@
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('ClinicaLog.ico') }}" type="image/x-icon" />
 
-    {{-- Fonts --}}
-    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
-    <script>
-        WebFont.load({
-            google: { families: ['Public Sans:300,400,500,600,700'] },
-            custom: {
-                families: [
-                    'Font Awesome 5 Solid',
-                    'Font Awesome 5 Regular',
-                    'Font Awesome 5 Brands',
-                    'simple-line-icons'
-                ],
-                urls: ['{{ asset('assets/css/fonts.min.css') }}']
-            },
-            active: function () {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
 
     {{-- Icons --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
 
-    {{-- Kaiadmin CSS --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}">
 
 
     {{-- Custom Sidebar Style --}}
@@ -104,21 +82,6 @@
 
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
-    <!-- jQuery Scrollbar -->
-    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Kaiadmin JS -->
-
-    {{-- <script src="../assets/js/kaiadmin.min.js"></script> --}}
-    <script src="{{ asset('assets/js/kaiadmin.js') }}"></script>
-    {{-- <script src="../assets/js/kaiadmin.js"></script> --}}
-    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
-
-    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
 
     <style>
         .dataTables_wrapper .dataTables_paginate .paginate_button {
