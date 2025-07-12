@@ -77,20 +77,40 @@ Route::get('/addStudent', function () {
     return view('admin.addStudent');
 })->name('addStudent');
 
+// Route for Editing Patient Record Student
+Route::get('/editStudent', function () {
+    return view('admin.editStudent');
+})->name('editStudent');
+
 // Route for Adding Patient Record Faculty
 Route::get('/addFaculty', function () {
     return view('admin.addFaculty');
 })->name('addFaculty');
+
+// Route for Editing Patient Record Faculty
+Route::get('/editFaculty', function () {
+    return view('admin.editFaculty');
+})->name('editFaculty');
 
 // Route for Adding Patient Record Staff
 Route::get('/addStaff', function () {
     return view('admin.addStaff');
 })->name('addStaff');
 
+// Route for Editing Patient Record Faculty
+Route::get('/editStaff', function () {
+    return view('admin.editStaff');
+})->name('editStaff');
+
 // Route for Adding Patient Record Extension
 Route::get('/addExtension', function () {
     return view('admin.addExtension');
 })->name('addExtension');
+
+// Route for Editing Patient Record Faculty
+Route::get('/editExtension', function () {
+    return view('admin.editExtension');
+})->name('editExtension');
 
 //Route for Viewing Patient Profile Student
 Route::get('/patientProfilestud', function () {

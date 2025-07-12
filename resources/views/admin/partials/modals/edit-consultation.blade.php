@@ -35,6 +35,54 @@
                     </div>
 
                     <script>
+                        // Ensure only patient name and date are readonly, all other fields editable
+                        // View button for consultation (show modal and populate all fields from data attributes)
+                        $(document).ready(function() {
+                            $('#add-con').on('click', '.viewConButton', function() {
+                                var $btn = $(this);
+                                var title = $btn.data('title') || '';
+                                var medicine = $btn.data('medicine') || '';
+                                var date = $btn.data('date') || '';
+                                var diagnosis = $btn.data('diagnosis') || '';
+                                var clinician = $btn.data('clinician') || '';
+                                var notes = $btn.data('notes') || '';
+                                var remarks = $btn.data('remarks') || '';
+                                // Populate modal fields (adjust IDs as needed)
+                                $('#consultationDetailsModal #details_con_title').text(title);
+                                $('#consultationDetailsModal #details_con_medicine').text(medicine);
+                                $('#consultationDetailsModal #details_con_date').text(date);
+                                $('#consultationDetailsModal #details_con_diagnosis').text(diagnosis);
+                                $('#consultationDetailsModal #details_con_clinician').text(clinician);
+                                $('#consultationDetailsModal #details_con_notes').text(notes);
+                                $('#consultationDetailsModal #details_con_remarks').text(remarks);
+                                $('#consultationDetailsModal').modal('show');
+                            });
+                        });
+                        // Edit button for consultation (show edit modal and populate fields)
+                        $(document).ready(function() {
+                            $('#add-con').on('click', '.editConButton', function() {
+                                var $row = $(this).closest('tr');
+                                var $btn = $(this);
+                                // Try to get all data from data attributes if present
+                                var title = $btn.data('title') || $row.find('td').contents().filter(function() { return this.nodeType === 3; }).text().trim();
+                                var medicine = $btn.data('medicine') || $row.find('span').eq(0).text().trim();
+                                var date = $btn.data('date') || $row.find('span').eq(1).text().trim();
+                                var diagnosis = $btn.data('diagnosis') || '';
+                                var clinician = $btn.data('clinician') || '';
+                                var notes = $btn.data('notes') || '';
+                                var remarks = $btn.data('remarks') || '';
+                                // Populate modal fields (adjust IDs as needed)
+                                $('#editConModal #edit_patient_name').val(title);
+                                $('#editConModal #edit_medicine').val(medicine);
+                                $('#editConModal #edit_date').val(date);
+                                $('#editConModal #edit_diagnosis').val(diagnosis);
+                                $('#editConModal #edit_notes').val(notes);
+                                $('#editConModal #edit_remarks').val(remarks);
+                                $('#editConModal #edit_clinician').val(clinician);
+                                // Show the modal
+                                $('#editConModal').modal('show');
+                            });
+                        });
                         $(document).ready(function() {
                             $('#edit_medicine').on('keyup', function() {
                                 var query = $(this).val();

@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section('title', 'Patient Record')
 @section('content')
-{{ Breadcrumbs::render('patientRecord') }}
+    {{ Breadcrumbs::render('patientRecord') }}
 
     <div class="container" id="content">
         <div class="page-inner">
@@ -112,41 +112,93 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Ashley</td>
-                                            <td>a@gmail.com</td>
-                                            <td>female</td>
-                                            <td>student</td>
-                                            <td>active</td>
-                                            <td></td>
-
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>Ashley</td>
-                                                <td>a@gmail.com</td>
-                                                <td>female</td>
-                                                <td>student</td>
-                                                <td>active</td>
-                                                <td></td>
-                                            </tr>
+                                            @php
+                                                $patients = [
+                                                    [
+                                                        'id' => 1,
+                                                        'id_number' => '2023001',
+                                                        'full_name' => 'Ashley Cruz',
+                                                        'email' => 'ashley.cruz@gmail.com',
+                                                        'sex' => 'female',
+                                                        'type' => 'student',
+                                                        'status' => 'active',
+                                                    ],
+                                                    [
+                                                        'id' => 2,
+                                                        'id_number' => '2023002',
+                                                        'full_name' => 'Brian Lee',
+                                                        'email' => 'brian.lee@gmail.com',
+                                                        'sex' => 'male',
+                                                        'type' => 'faculty',
+                                                        'status' => 'inactive',
+                                                    ],
+                                                    [
+                                                        'id' => 3,
+                                                        'id_number' => '2023003',
+                                                        'full_name' => 'Carla Santos',
+                                                        'email' => 'carla.santos@gmail.com',
+                                                        'sex' => 'female',
+                                                        'type' => 'staff',
+                                                        'status' => 'active',
+                                                    ],
+                                                    [
+                                                        'id' => 4,
+                                                        'id_number' => '2023004',
+                                                        'full_name' => 'David Tan',
+                                                        'email' => 'david.tan@gmail.com',
+                                                        'sex' => 'male',
+                                                        'type' => 'extension',
+                                                        'status' => 'inactive',
+                                                    ],
+                                                ];
+                                            @endphp
+                                            @foreach ($patients as $i => $patient)
+                                                <tr>
+                                                    <td>{{ $i + 1 }}</td>
+                                                    <td>{{ $patient['id_number'] }}</td>
+                                                    <td>{{ $patient['full_name'] }}</td>
+                                                    <td>{{ $patient['email'] }}</td>
+                                                    <td>{{ $patient['sex'] }}</td>
+                                                    <td>{{ $patient['type'] }}</td>
+                                                    <td>
+                                                        @if ($patient['status'] === 'active')
+                                                            <span class="badge"
+                                                                style="background:#e6f4ea;color:#219653;border:1.5px solid #219653;padding:0.4em 1em 0.4em 1em;border-radius:16px;">active</span>
+                                                        @else
+                                                            <span class="badge"
+                                                                style="background:#faeaea;color:#c0392b;border:1.5px solid #c0392b;padding:0.4em 1em 0.4em 1em;border-radius:16px;">inactive</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <div style="display: flex; gap: 8px;">
+                                                            @php
+                                                                // Determine route names based on type
+                                                                $profileRoutes = [
+                                                                    'student' => 'patientProfilestud',
+                                                                    'faculty' => 'patientProfilefaculty',
+                                                                    'staff' => 'patientProfilestaff',
+                                                                    'extension' => 'patientProfileextension',
+                                                                ];
+                                                                $editRoutes = [
+                                                                    'student' => 'editStudent',
+                                                                    'faculty' => 'editFaculty',
+                                                                    'staff' => 'editStaff',
+                                                                    'extension' => 'editExtension',
+                                                                ];
+                                                                $type = $patient['type'];
+                                                            @endphp
+                                                            <a href="{{ route($profileRoutes[$type], ['id' => $patient['id']]) }}"
+                                                                class="btn btn-link btn-success btn-sm viewPatientButton"
+                                                                title="View"><i class="fa fa-eye"></i></a>
+                                                            <a href="{{ route($editRoutes[$type], ['id' => $patient['id']]) }}"
+                                                                class="btn btn-link btn-primary btn-sm editPatientButton"
+                                                                title="Edit"><i class="fa fa-edit"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
-                                                <th>Email</th>
-                                                <th>Sex</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-                                        </tbody>
+                                        <tfoot></tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -171,7 +223,7 @@
                         } // Disable sort on Sex, Type, Status, and Action columns
                     ],
                     paging: true, // Enable pagination
-                    pageLength: 1, // Show 10 entries per page by default
+                    pageLength: 2, // Show 10 entries per page by default
                     lengthMenu: [5, 10, 25, 50, 100], // Options for number of rows per page
                 });
             });
