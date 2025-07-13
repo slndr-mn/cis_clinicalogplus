@@ -16,7 +16,6 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
 
-
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i> 
@@ -74,11 +73,14 @@
                 <li class="nav-item has-submenu">
                     <a href="#" class="submenu-toggle">
                         <i class="menu-icon fa fa-user-cog"></i>
-                        <span class="menu-label">Clinic Staff User</span>
+                        <span class="menu-label">Manage Clinic Personnel</span>
                         <i class="dropdown-icon fas fa-chevron-down"></i>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('admin.staffuser') }}">RBAC Control Panel</a></li>
+                        <li><a href="{{ route('admin.staffuser') }}">Clinic Staff User</a></li>
+                    </ul>
+                    <ul class="submenu">
+                        <li><a href="{{ route('admin.staffuser') }}">Role and Permission Control</a></li>
                     </ul>
                 </li>
 

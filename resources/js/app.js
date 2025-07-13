@@ -10,9 +10,10 @@ const mount = (selector, component) => {
     if (el) {
         createApp(component).mount(el);
     }
-};
+}; 
 
 mount('#sidebar', Sidebar);
 mount('#header', Header);
 
-// import './kaiadmin.js';
+// import './kaiadmin.js'; 
+
