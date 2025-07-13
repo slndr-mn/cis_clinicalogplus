@@ -61,6 +61,7 @@ Route::middleware('auth:patient')->group(function () {
 // Route for Patient Record (for sidebar and All button)
 // Both sidebar and All button should use the same route for consistency
 Route::get('/admin/patientRecord', [PatientRecordController::class, 'index'])->name('patientRecord');
+
 // Route::get('/patientRecord', function () {
 //     return view('admin.patientRecord');
 // })->name('patientRecord');
