@@ -52,7 +52,7 @@
                         <i class="dropdown-icon fas fa-chevron-down"></i>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('admin.patientRecord') }}">Add Patient</a></li>
+                        <li><a href="{{ route('patientRecord') }}">Add Patient</a></li>
                         <li><a href="addconsultation.php">Consultations</a></li>
                     </ul>
                 </li>
