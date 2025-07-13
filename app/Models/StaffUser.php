@@ -18,90 +18,81 @@ class StaffUser extends Authenticatable
     protected $fillable = [
         'user_idnum',
         'user_fname',
-        'user_lname', 
         'user_mname',
+        'user_lname',
         'user_email',
         'email_hash',
-        'user_contact',
-        'user_address',
         'user_position',
         'user_role',
         'user_status',
         'user_profile',
         'user_password',
-        'user_otpcode',
-        'user_otpexpiresat'
     ];
 
     protected $hidden = [
         'user_password',
     ];
 
-    // Encrypt & Decrypt First Name
+    // Capitalize + Encrypt First Name
     public function setUserFnameAttribute($value)
     {
-        $this->attributes['user_fname'] = Crypt::encrypt($value);
+        $this->attributes['user_fname'] = $value ? Crypt::encrypt(ucwords(strtolower($value))) : null;
     }
 
     public function getUserFnameAttribute($value)
     {
-        return Crypt::decrypt($value);
+        return $value ? Crypt::decrypt($value) : null;
     }
 
-    // Encrypt & Decrypt Last Name
+    // Capitalize + Encrypt Last Name
     public function setUserLnameAttribute($value)
     {
-        $this->attributes['user_lname'] = Crypt::encrypt($value);
+        $this->attributes['user_lname'] = $value ? Crypt::encrypt(ucwords(strtolower($value))) : null;
     }
 
     public function getUserLnameAttribute($value)
     {
-        return Crypt::decrypt($value);
+        return $value ? Crypt::decrypt($value) : null;
     }
 
-    // Encrypt & Decrypt Middle Name
+    // Capitalize + Encrypt Middle Name
     public function setUserMnameAttribute($value)
     {
-        $this->attributes['user_mname'] = Crypt::encrypt($value);
+        $this->attributes['user_mname'] = $value ? Crypt::encrypt(ucwords(strtolower($value))) : null;
     }
 
     public function getUserMnameAttribute($value)
     {
-        return Crypt::decrypt($value);
+        return $value ? Crypt::decrypt($value) : null;
     }
 
-    // Encrypt & Decrypt Contact
-    public function setUserContactAttribute($value)
-    {
-        $this->attributes['user_contact'] = Crypt::encrypt($value);
-    }
- 
-    public function getUserContactAttribute($value)
-    {
-        return Crypt::decrypt($value);
-    }
-
-    // Encrypt & Decrypt Address
-    public function setUserAddressAttribute($value)
-    {
-        $this->attributes['user_address'] = Crypt::encrypt($value);
-    }
-
-    public function getUserAddressAttribute($value)
-    {
-        return Crypt::decrypt($value); 
-    }
-
-    // Encrypt Email + Auto-generate Hash
+    // Encrypt Email (no hash logic here anymore)
     public function setUserEmailAttribute($value)
     {
-        $this->attributes['user_email'] = Crypt::encrypt($value);
-        $this->attributes['email_hash'] = hash('sha256', strtolower($value));
+        $this->attributes['user_email'] = $value ? Crypt::encrypt($value) : null;
     }
 
     public function getUserEmailAttribute($value)
     {
-        return Crypt::decrypt($value);
+        return $value ? Crypt::decrypt($value) : null;
+    }
+
+    // Boot method to auto-generate email_hash
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            if ($user->user_email) {
+                $user->email_hash = hash('sha256', strtolower($user->user_email));
+            }
+        });
+
+        static::updating(function ($user) {
+            if ($user->user_email) {
+                $user->email_hash = hash('sha256', strtolower($user->user_email));
+            }
+        });
     }
 
     // Custom password column for Laravel Auth

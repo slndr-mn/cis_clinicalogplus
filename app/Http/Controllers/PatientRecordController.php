@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PatientRecordController extends Controller
-{
+{ 
     public function index()
     {
         return view('admin.patientRecord'); // placeholder view

@@ -1,0 +1,96 @@
+@charset "UTF-8";
+.sidebar .submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    color: #495057;
+    background: transparent;
+    transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.sidebar .submenu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #212529;
+}
+
+/* Icon beside the menu label */
+.sidebar .menu-icon {
+    width: 20px;
+    text-align: center;
+}
+
+/* Menu label text */
+.sidebar .menu-label {
+    flex: 1;
+    font-size: 15px;
+}
+
+/* Chevron (dropdown) icon */
+.sidebar .dropdown-icon {
+    transition: transform 0.3s ease;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+/* Rotate chevron when submenu is open */
+.nav-item.open .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Submenu container */
+.sidebar .submenu {
+    list-style: none; /* removes bullets */
+    padding-left: 0; /* removes indentation */
+    max-height: 0;
+    overflow: hidden;
+    background: transparent; /* makes submenu background match sidebar */
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+/* Submenu visible when open */
+.nav-item.open .submenu {
+    max-height: 300px; /* adjust as needed */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Submenu links */
+.sidebar .submenu li {
+    list-style: none; /* extra safety */
+}
+
+.sidebar .submenu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #495057;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.sidebar .submenu li a:hover {
+    color: #212529;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding-left: 25px;
+}
+body.sidebar-collapsed #sidebar {
+    width: 60px;
+    overflow-x: hidden;
+}
+
+body.sidebar-collapsed #sidebar .menu-label,
+body.sidebar-collapsed #sidebar .dropdown-icon,
+body.sidebar-collapsed #sidebar .submenu {
+    display: none !important;
+}
+#sidebar {
+    transition: width 0.3s ease;
+}
+
