@@ -1,6 +1,8 @@
 @extends('admin.app')
 @section('title', 'Patient Record')
 @section('content')
+    {{ Breadcrumbs::render('patientRecord') }}
+
     <div class="container" id="content">
         <div class="page-inner">
             <div class="page-inner">
@@ -10,19 +12,19 @@
                             <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border"
                                 role="tablist">
                                 <li>
-                                    <a class="nav-link active" href="patient-record.php" role="tab">All</a>
+                                    <a href="{{ route('patientRecord') }}" class="nav-link nav-pattable">All</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordstud.php" role="tab">Student</a>
+                                    <a href="{{ route('patientRecordstud') }}" class="nav-link nav-pattable">Student</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordfac.php" role="tab">Faculty</a>
+                                    <a href="{{ route('patientRecordfac') }}" class="nav-link nav-pattable">Faculty</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordstaff.php" role="tab">Staff</a>
+                                    <a href="{{ route('patientRecordstaff') }}" class="nav-link nav-pattable">Staff</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="patient-recordexten.php" role="tab">Extension</a>
+                                    <a href="{{ route('patientRecordexten') }}" class="nav-link nav-pattable">Extension</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,35 +61,36 @@
                                             <div class="modal-body">
                                                 <form class="modalButton">
                                                     <!-- Button for Student Patient -->
-                                                    <a href="addstudent.php">
+                                                    <a href="{{ route('addStudent') }}">
                                                         <button type="button"
                                                             class="btn btn-primary btn-round ms-auto custom-button"
                                                             id="addbutton">
                                                             Student
                                                         </button>
                                                     </a>
-                                                    <!-- Button for Staff Patient -->
-                                                    <a href="addfaculty.php">
+                                                    <!-- Button for Faculty Patient -->
+                                                    <a href="{{ route('addFaculty') }}">
                                                         <button type="button"
                                                             class="btn btn-primary btn-round ms-auto custom-button"
                                                             id="addbutton">
                                                             Faculty
                                                         </button>
                                                     </a>
-                                                    <a href="addstaff.php">
+                                                    <a href="{{ route('addStaff') }}">
                                                         <button type="button"
                                                             class="btn btn-primary btn-round ms-auto custom-button"
                                                             id="addbutton">
                                                             Staff
                                                         </button>
                                                     </a>
-                                                    <a href="addextension.php">
+                                                    <a href="{{ route('addExtension') }}">
                                                         <button type="button"
                                                             class="btn btn-primary btn-round ms-auto custom-button"
                                                             id="addbutton">
                                                             Extension
                                                         </button>
                                                     </a>
+                                                </form>
                                                 </form>
                                             </div>
                                         </div>
@@ -108,32 +111,104 @@
                                                 <th style="width: 10%">Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>ID Number</th>
-                                                <th>Full Name</th>
-                                                <th>Email</th>
-                                                <th>Sex</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
-
+                                            @php
+                                                $patients = [
+                                                    [
+                                                        'id' => 1,
+                                                        'id_number' => '2023001',
+                                                        'full_name' => 'Ashley Cruz',
+                                                        'email' => 'ashley.cruz@gmail.com',
+                                                        'sex' => 'female',
+                                                        'type' => 'student',
+                                                        'status' => 'active',
+                                                    ],
+                                                    [
+                                                        'id' => 2,
+                                                        'id_number' => '2023002',
+                                                        'full_name' => 'Brian Lee',
+                                                        'email' => 'brian.lee@gmail.com',
+                                                        'sex' => 'male',
+                                                        'type' => 'faculty',
+                                                        'status' => 'inactive',
+                                                    ],
+                                                    [
+                                                        'id' => 3,
+                                                        'id_number' => '2023003',
+                                                        'full_name' => 'Carla Santos',
+                                                        'email' => 'carla.santos@gmail.com',
+                                                        'sex' => 'female',
+                                                        'type' => 'staff',
+                                                        'status' => 'active',
+                                                    ],
+                                                    [
+                                                        'id' => 4,
+                                                        'id_number' => '2023004',
+                                                        'full_name' => 'David Tan',
+                                                        'email' => 'david.tan@gmail.com',
+                                                        'sex' => 'male',
+                                                        'type' => 'extension',
+                                                        'status' => 'inactive',
+                                                    ],
+                                                ];
+                                            @endphp
+                                            @foreach ($patients as $i => $patient)
+                                                <tr>
+                                                    <td>{{ $i + 1 }}</td>
+                                                    <td>{{ $patient['id_number'] }}</td>
+                                                    <td>{{ $patient['full_name'] }}</td>
+                                                    <td>{{ $patient['email'] }}</td>
+                                                    <td>{{ $patient['sex'] }}</td>
+                                                    <td>{{ $patient['type'] }}</td>
+                                                    <td>
+                                                        @if ($patient['status'] === 'active')
+                                                            <span class="badge"
+                                                                style="background:#e6f4ea;color:#219653;border:1.5px solid #219653;padding:0.4em 1em 0.4em 1em;border-radius:16px;">active</span>
+                                                        @else
+                                                            <span class="badge"
+                                                                style="background:#faeaea;color:#c0392b;border:1.5px solid #c0392b;padding:0.4em 1em 0.4em 1em;border-radius:16px;">inactive</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <div style="display: flex; gap: 8px;">
+                                                            @php
+                                                                // Determine route names based on type
+                                                                $profileRoutes = [
+                                                                    'student' => 'patientProfilestud',
+                                                                    'faculty' => 'patientProfilefaculty',
+                                                                    'staff' => 'patientProfilestaff',
+                                                                    'extension' => 'patientProfileextension',
+                                                                ];
+                                                                $editRoutes = [
+                                                                    'student' => 'editStudent',
+                                                                    'faculty' => 'editFaculty',
+                                                                    'staff' => 'editStaff',
+                                                                    'extension' => 'editExtension',
+                                                                ];
+                                                                $type = $patient['type'];
+                                                            @endphp
+                                                            <a href="{{ route($profileRoutes[$type], ['id' => $patient['id']]) }}"
+                                                                class="btn btn-link btn-success btn-sm viewPatientButton"
+                                                                title="View"><i class="fa fa-eye"></i></a>
+                                                            <a href="{{ route($editRoutes[$type], ['id' => $patient['id']]) }}"
+                                                                class="btn btn-link btn-sm editPatientButton"
+                                                                title="Edit"><i class="fa fa-edit"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
+                                        <tfoot></tfoot>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
 
-    @push('scripts')
         <script>
             $(document).ready(function() {
                 $('#add-patient').DataTable({
@@ -143,12 +218,13 @@
                     ], // Optional: sort by 3rd column ascending
                     columnDefs: [{
                             orderable: false,
-                            targets: [7]
-                        } // Optional: disable sort on Action column
-                    ]
+                            targets: [4, 5, 6, 7]
+                        } // Disable sort on Sex, Type, Status, and Action columns
+                    ],
+                    paging: true, // Enable pagination
+                    pageLength: 2, // Show 10 entries per page by default
+                    lengthMenu: [5, 10, 25, 50, 100], // Options for number of rows per page
                 });
             });
-
-    @endpush
-
+        </script>
 @endsection

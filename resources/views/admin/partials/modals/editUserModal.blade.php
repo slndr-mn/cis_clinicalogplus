@@ -11,28 +11,25 @@
 
       <div class="modal-body">
         <!-- Edit Form -->
-        <form id="editForm" action="#" method="POST" enctype="multipart/form-data">
-          <input id="admin_id" name="admin_id" type="hidden" class="form-control" value="" />
-
+        <form id="editForm" action="{{ route('admin.update') }}" method="POST" enctype="multipart/form-data">
+           @csrf
+          <input id="adminid" name="adminid" type="hidden" class="form-control"/>
+         
           <div class="row">
-            <div class="col-md-6">
-              <p class="fw-light">Date Added: <span id="dateadded"></span></p>
-            </div>
-
+            
             <div class="col-md-12 text-center mb-4">
               <div class="profile-display">
                 <img id="currentProfile" src="" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;" />
                 <br>
-                <label for="editprofile" class="btn btn-outline-primary mt-3">Edit Profile</label>
+                <label for="editprofile" class="btn btn-primary mt-3">Edit Profile</label>
                 <input id="editprofile" name="editprofile" type="file" class="form-control d-none" accept=".png, .jpg, .jpeg" />
               </div>
             </div>
-
+ 
             <div class="col-md-12">
               <div class="form-group form-group-default">
                 <label>ID</label>
                 <input id="editid" name="editid" type="text" class="form-control" placeholder="fill ID" />
-                <input id="editoldid" name="editoldid" type="text" class="form-control" hidden />
               </div>
             </div>
             <div class="col-md-6 pe-0">
@@ -86,11 +83,43 @@
           </div>
 
           <div class="modal-footer border-0">
-            <button type="submit" class="btn btn-primary" name="updateuser">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-        </form>
+        </form> 
       </div>
-    </div>
+    </div> 
   </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.editButton').on('click', function () {
+            let button = $(this); 
+            let userProfile = button.data('profile');
+
+            $('#adminid').val(button.data('adminid'));
+            $('#currentProfile').attr('src', userProfile ? `/profile-image/${userProfile}` : '/img/default-image.jpg');
+            $('#editid').val(button.data('id'));
+            $('#editfname').val(button.data('fname'));
+            $('#editmname').val(button.data('mname'));
+            $('#editlname').val(button.data('lname'));
+            $('#editemail').val(button.data('email'));
+            $('#editposition').val(button.data('position'));
+            $('#editrole').val(button.data('role'));
+            $('#editstatus').val(button.data('status'));
+           
+
+
+        });
+    });
+
+    $('#editprofile').on('change', function () {
+        const [file] = this.files;
+        if (file) {
+            $('#currentProfile').attr('src', URL.createObjectURL(file));
+        }
+    });
+
+</script>
+

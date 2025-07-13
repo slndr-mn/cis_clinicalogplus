@@ -16,8 +16,6 @@ class StaffUserSeeder extends Seeder
         'user_lname'    => 'Dela Cruz',
         'user_mname'    => 'Santos',
         'user_email'    => 'gmdcasia00136@usep.edu.ph',
-        'user_contact'  => '09123456789',
-        'user_address'  => 'Tagum City',
         'user_position' => 'Admin',
         'user_role'     => 'Admin', 
         'user_status'   => 'Active',
