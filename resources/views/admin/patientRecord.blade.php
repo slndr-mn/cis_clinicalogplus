@@ -191,7 +191,7 @@
                                                                 class="btn btn-link btn-success btn-sm viewPatientButton"
                                                                 title="View"><i class="fa fa-eye"></i></a>
                                                             <a href="{{ route($editRoutes[$type], ['id' => $patient['id']]) }}"
-                                                                class="btn btn-link btn-primary btn-sm editPatientButton"
+                                                                class="btn btn-link btn-sm editPatientButton"
                                                                 title="Edit"><i class="fa fa-edit"></i></a>
                                                         </div>
                                                     </td>
@@ -203,13 +203,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
 
-    @push('scripts')
         <script>
             $(document).ready(function() {
                 $('#add-patient').DataTable({
@@ -228,5 +227,4 @@
                 });
             });
         </script>
-    @endpush
 @endsection

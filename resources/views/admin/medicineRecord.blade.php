@@ -3,8 +3,8 @@
 @section('content')
 
 
-<!-- Include DataTables CSS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Include DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <div class="container" id="content">
         <div class="page-inner">
             <div class="row">
@@ -25,7 +25,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="medicineName">Medicine Name</label>
-                                    <input type="text"id="medicineName" name="medicineName" class="form-control" 
+                                    <input type="text"id="medicineName" name="medicineName" class="form-control"
                                         value="{{ old('medicineName') }}" placeholder="Enter medicine name" required>
                                     @error('medicineName')
                                         <div class="text-danger">{{ $message }}</div>
@@ -46,54 +46,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Medicines Table Card -->
-            <div class="col-md-8">
-                <div class="card card-equal-height">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <h4 class="card-title">List of Medicine</h4>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="add-med" class="display table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Stocks</th>
-                                        <th>Total Quantity</th>
-                                        <th style="width: 10%">Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Stocks</th>
-                                        <th>Total Quantity</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr data-id="101" data-name="Paracetamol" data-category="Painkiller" data-stock="25">
-                                        <td>101</td>
-                                        <td>Paracetamol</td>
-                                        <td>Painkiller</td>
-                                        <td>25</td>
-                                        <td>100</td>
-                                        <td>
-                                            <button type="button" class="btn btn-link btn-primary btn-lg editMedButton">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
 
                 <!-- Medicines Table Card -->
                 <div class="col-md-8">
@@ -104,29 +57,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- First Table Controls -->
-                            <div class="row mb-3">
-                                <div class="col-sm-12 col-md-6">
-                                    <label class="d-flex align-items-center">
-                                        Show
-                                        <select id="entriesSelectMedList" class="form-control form-control-sm ms-2"
-                                            style="width: 80px;">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                        entries
-                                    </label>
-                                </div>
-                                <div class="col-sm-12 col-md-6 d-flex justify-content-end">
-                                    <label class="d-flex align-items-center">
-                                        Search:
-                                        <input type="search" id="medListSearch" class="form-control ms-2" placeholder="">
-                                    </label>
-                                </div>
-                            </div>
-
                             <!-- Table -->
                             <div class="table-responsive">
                                 <table id="add-med" class="display table table-striped table-hover">
@@ -166,8 +96,7 @@
                                             <td>{{ $stockCount }}</td>
                                             <td>{{ $totalQty }}</td>
                                             <td>
-                                                <button type="button"
-                                                    class="btn btn-link btn-lg editMedButton">
+                                                <button type="button" class="btn btn-link btn-lg editMedButton">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -176,118 +105,10 @@
 
                                 </table>
                             </div>
-
-                            <!-- Pagination -->
-                            <div class="row mt-3 align-items-center">
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" role="status" aria-live="polite">
-                                        Showing 1 to 2 of 2 entries
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-7 d-flex justify-content-end">
-                                    <ul class="pagination mb-0">
-                                        <li class="paginate_button page-item previous disabled">
-                                            <a href="#" class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item next disabled">
-                                            <a href="#" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Pagination -->
-
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        {{-- Additional Medicine Stock Section --}}
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                        <h4 class="card-title">Medicine Stock</h4>
-                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addMedModal">
-                            <i class="fa fa-plus"></i> Add Medicine Stock
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="add-med-stock" class="display table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Quantity</th>
-                                        <th>Dosage Strength</th>
-                                        <th>Date & Time Added</th>
-                                        <th>Expiration Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Quantity</th>
-                                        <th>Dosage Strength</th>
-                                        <th>Date & Time Added</th>
-                                        <th>Expiration Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>201</td>
-                                        <td>Paracetamol</td>
-                                        <td>50</td>
-                                        <td>500mg</td>
-                                        <td>2025-07-06 09:30 AM</td>
-                                        <td>2026-07-06</td>
-                                        <td><span class="badge bg-success">Enabled</span></td>
-                                        <td><button class="btn btn-link btn-primary btn-lg editMedButton" data-bs-toggle="modal" data-bs-target="#editMedModal"><i class="fa fa-edit"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>202</td>
-                                        <td>Amoxicillin</td>
-                                        <td>30</td>
-                                        <td>250mg</td>
-                                        <td>2025-07-05 02:15 PM</td>
-                                        <td>2026-01-15</td>
-                                        <td><span class="badge bg-danger">Disabled</span></td>
-                                        <td><button class="btn btn-link btn-primary btn-lg editMedButton" data-bs-toggle="modal" data-bs-target="#editMedModal"><i class="fa fa-edit"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>203</td>
-                                        <td>Ibuprofen</td>
-                                        <td>80</td>
-                                        <td>400mg</td>
-                                        <td>2025-07-01 11:00 AM</td>
-                                        <td>2026-12-31</td>
-                                        <td><span class="badge bg-success">Enabled</span></td>
-                                        <td><button class="btn btn-link btn-primary btn-lg editMedButton" data-bs-toggle="modal" data-bs-target="#editMedModal"><i class="fa fa-edit"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>204</td>
-                                        <td>Vitamin C</td>
-                                        <td>100</td>
-                                        <td>1000mg</td>
-                                        <td>2025-06-30 08:00 AM</td>
-                                        <td>2027-01-01</td>
-                                        <td><span class="badge bg-success">Enabled</span></td>
-                                        <td><button class="btn btn-link btn-primary btn-lg editMedButton" data-bs-toggle="modal" data-bs-target="#editMedModal"><i class="fa fa-edit"></i></button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
 
             {{-- Additional Medicine Stock Section --}}
             <div class="row mt-5">
@@ -301,33 +122,6 @@
                             </button>
                         </div>
                         <div class="card-body">
-
-                            <!-- Top Controls -->
-                            <!-- Second Table Controls -->
-                            <div class="row mb-3">
-                                <div class="col-sm-12 col-md-6">
-                                    <label class="d-flex align-items-center">
-                                        Show
-                                        <select id="entriesSelectStock" class="form-control form-control-sm ms-2"
-                                            style="width: 80px;">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                        entries
-                                    </label>
-                                </div>
-                                <div class="col-sm-12 col-md-6 d-flex justify-content-end">
-                                    <label class="d-flex align-items-center">
-                                        Search:
-                                        <input type="search" id="medStockSearch" class="form-control ms-2"
-                                            placeholder="">
-                                    </label>
-                                </div>
-                            </div>
-
-
                             <div class="table-responsive">
                                 <table id="add-med-stock" class="display table table-striped table-hover">
                                     <thead>
@@ -357,13 +151,15 @@
                                     <tbody>
                                         @php
                                             $currentDate = \Carbon\Carbon::now();
-                                          
 
                                         @endphp
 
                                         @foreach ($medstocks as $medstock)
                                             @php
-                                                $timeFormatted = \Carbon\Carbon::createFromFormat('H:i:s', $medstock->medstock_timeadded)->format('h:i A');
+                                                $timeFormatted = \Carbon\Carbon::createFromFormat(
+                                                    'H:i:s',
+                                                    $medstock->medstock_timeadded,
+                                                )->format('h:i A');
                                                 $disableStatus =
                                                     $medstock->medstock_disable == 1 ? 'Disabled' : 'Enabled';
                                                 $statusColor = $medstock->medstock_disable == 1 ? '#ff6961' : '#77dd77';
@@ -392,11 +188,13 @@
                                                 data-dateadded="{{ $medstock->medstock_dateadded }} {{ $timeFormatted }}"
                                                 data-expirationdt="{{ $medstock->medstock_expirationdt }}"
                                                 data-disable="{{ $medstock->medstock_disable }}"
-                                                style="background-color: {{ $statusColor }}20;"> {{-- Light bg tint --}}
+                                                style="background-color: {{ $statusColor }}20;">
+                                                {{-- Light bg tint --}}
 
                                                 <td>{{ $medstock->medstock_id }}</td>
                                                 <td>{{ $medstock->medicine->medicine_name ?? 'N/A' }}
-                                                    ({{ $medstock->medstock_unit }})</td>
+                                                    ({{ $medstock->medstock_unit }})
+                                                </td>
                                                 <td style="color: {{ $qtyColor }};">{{ $statusqtyMessage }} /
                                                     {{ $medstock->medstock_origqty }}</td>
                                                 <td>{{ $medstock->medstock_dosage }}</td>
@@ -423,11 +221,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <button type="button"
-                                                            class="btn btn-link btn-lg editButton">
+                                                        <button type="button" class="btn btn-link btn-lg editButton">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
-                                                         <button class="btn btn-link btn-danger btn-lg removeButton"
+                                                        <button class="btn btn-link btn-danger btn-lg removeButton"
                                                             data-id="{{ $medstock->medstock_id }}" title="Remove">
                                                             <i class="fa fa-trash"></i>
                                                         </button>
@@ -439,29 +236,6 @@
                                 </table>
                             </div>
 
-                            <!-- Pagination -->
-                            <div class="row mt-3">
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" role="status" aria-live="polite">
-                                        Showing 1 to 4 of 4 entries
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-7 d-flex justify-content-end">
-                                    <ul class="pagination mb-0">
-                                        <li class="paginate_button page-item previous disabled">
-                                            <a href="#" class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item next disabled">
-                                            <a href="#" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Pagination -->
-
                         </div>
                     </div>
                 </div>
@@ -472,25 +246,36 @@
 
     @include('admin.partials.modals.add-medicine-stock')
     @include('admin.partials.modals.edit-medicine-stock')
+    <x-alert.swal />
 
     <!-- Include DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#add-med').DataTable({
                 responsive: true,
-                order: [[1, 'asc']],
-                columnDefs: [{ orderable: false, targets: [5] }],
+                order: [
+                    [1, 'asc']
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    targets: [5]
+                }],
                 paging: true,
-                pageLength: 5,
+                pageLength: 5, 
                 lengthMenu: [5, 10, 25, 50, 100],
             });
 
             $('#add-med-stock').DataTable({
                 responsive: true,
-                order: [[1, 'asc']],
-                columnDefs: [{ orderable: false, targets: [7] }],
+                order: [
+                    [1, 'asc']
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    targets: [7]
+                }],
                 paging: true,
                 pageLength: 5,
                 lengthMenu: [5, 10, 25, 50, 100],
@@ -499,138 +284,3 @@
     </script>
 
 @endsection
-
-
-
-        @include('admin.partials.modals.add-medicine-stock', ['medicine' => $medicines])
-        @include('admin.partials.modals.edit-medicine-stock', ['medicine' => $medicines])
-        <x-alert.swal />
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const editButtons = document.querySelectorAll('.editMedButton');
-
-                editButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const row = this.closest('tr');
-                        document.getElementById('medicineId').value = row.dataset.id;
-                        document.getElementById('medicineName').value = row.dataset.name;
-                        document.getElementById('medicineCategory').value = row.dataset.category;
-
-                    });
-                });
-            });
-        </script>
-
-
-        {{-- Scripts --}}
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                setupFrontEndTable(
-                    "add-med", // table ID
-                    "medListSearch", // search input ID
-                    "entriesSelectMedList", // entries select ID
-                    "tableInfoMedList", // table info display ID
-                    "paginationListMedList" // pagination list ID
-                );
-
-                setupFrontEndTable(
-                    "add-med-stock",
-                    "medStockSearch",
-                    "entriesSelectStock",
-                    "tableInfoMedStock",
-                    "paginationListMedStock"
-                );
-            });
-
-            function setupFrontEndTable(tableId, searchInputId, entriesSelectId, tableInfoId, paginationListId) {
-                const table = document.getElementById(tableId);
-                const tbody = table.querySelector("tbody");
-                const searchInput = document.getElementById(searchInputId);
-                const entriesSelect = document.getElementById(entriesSelectId);
-                const tableInfo = document.getElementById(tableInfoId);
-                const paginationList = document.getElementById(paginationListId);
-
-                if (!table || !searchInput || !entriesSelect || !tableInfo || !paginationList) return;
-
-                let rows = Array.from(tbody.querySelectorAll("tr"));
-                let currentPage = 1;
-                let entriesPerPage = parseInt(entriesSelect.value);
-
-                function filterAndPaginate() {
-                    const searchTerm = searchInput.value.toLowerCase();
-                    const filteredRows = rows.filter(row =>
-                        row.textContent.toLowerCase().includes(searchTerm)
-                    );
-
-                    const totalEntries = filteredRows.length;
-                    const totalPages = Math.ceil(totalEntries / entriesPerPage);
-                    currentPage = Math.min(currentPage, totalPages || 1);
-
-                    tbody.innerHTML = "";
-                    const startIdx = (currentPage - 1) * entriesPerPage;
-                    const paginatedRows = filteredRows.slice(startIdx, startIdx + entriesPerPage);
-                    paginatedRows.forEach(row => tbody.appendChild(row));
-
-                    const startEntry = totalEntries === 0 ? 0 : startIdx + 1;
-                    const endEntry = startIdx + paginatedRows.length;
-                    tableInfo.textContent = `Showing ${startEntry} to ${endEntry} of ${totalEntries} entries`;
-
-                    paginationList.innerHTML = "";
-
-                    if (totalPages > 1) {
-                        const prev = document.createElement("li");
-                        prev.className = `paginate_button page-item ${currentPage === 1 ? "disabled" : ""}`;
-                        prev.innerHTML = `<a href="#" class="page-link">Previous</a>`;
-                        prev.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            if (currentPage > 1) {
-                                currentPage--;
-                                filterAndPaginate();
-                            }
-                        });
-                        paginationList.appendChild(prev);
-
-                        for (let i = 1; i <= totalPages; i++) {
-                            const li = document.createElement("li");
-                            li.className = `paginate_button page-item ${i === currentPage ? "active" : ""}`;
-                            li.innerHTML = `<a href="#" class="page-link">${i}</a>`;
-                            li.addEventListener("click", (e) => {
-                                e.preventDefault();
-                                currentPage = i;
-                                filterAndPaginate();
-                            });
-                            paginationList.appendChild(li);
-                        }
-
-                        const next = document.createElement("li");
-                        next.className = `paginate_button page-item ${currentPage === totalPages ? "disabled" : ""}`;
-                        next.innerHTML = `<a href="#" class="page-link">Next</a>`;
-                        next.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            if (currentPage < totalPages) {
-                                currentPage++;
-                                filterAndPaginate();
-                            }
-                        });
-                        paginationList.appendChild(next);
-                    }
-                }
-
-                searchInput.addEventListener("input", () => {
-                    currentPage = 1;
-                    filterAndPaginate();
-                });
-
-                entriesSelect.addEventListener("change", () => {
-                    entriesPerPage = parseInt(entriesSelect.value);
-                    currentPage = 1;
-                    filterAndPaginate();
-                });
-
-                filterAndPaginate();
-            }
-        </script>
-
-    @endsection
-
