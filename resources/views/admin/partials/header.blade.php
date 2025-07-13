@@ -149,79 +149,20 @@
     </nav>
 </div>
 <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const html = document.documentElement;
+        const body = document.body;
         const wrapper = document.querySelector('.wrapper');
         const sidebar = document.getElementById('sidebar');
-
-        document.querySelectorAll('.sidenav-toggler').forEach(btn => {
-            btn.addEventListener('click', function() {
-                html.classList.toggle('nav_open');
-                this.classList.toggle('toggled');
-            });
-        });
-
-        document.querySelectorAll('.toggle-sidebar').forEach(btn => {
-            btn.addEventListener('click', function() {
-                wrapper.classList.toggle('sidebar_minimize');
-                const icon = this.querySelector('i');
-                icon.className = wrapper.classList.contains('sidebar_minimize') ?
-                    'gg-more-vertical-alt' :
-                    'gg-menu-right';
-            });
-
-    // Collapse sidebar (minimize) button
-    document.querySelectorAll('.btn.btn-toggle.sidenav-toggler').forEach(btn => {
-        btn.addEventListener('click', function () {
-            wrapper.classList.toggle('sidebar_minimize');
-            const icon = this.querySelector('i');
-            icon.className = wrapper.classList.contains('sidebar_minimize') 
-                ? 'gg-more-vertical-alt' 
-                : 'gg-menu-right';
-
-        });
-
-        // 3-dot toggler
-        document.querySelectorAll('.topbar-toggler').forEach(btn => {
-            btn.addEventListener('click', function() {
-                html.classList.toggle('topbar_open');
-                this.classList.toggle('toggled');
-            });
-        });
-
-        // Auto-close sidebar on mobile when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickOnToggler = event.target.closest('.sidenav-toggler');
-            const isMobile = window.innerWidth <= 991;
-
-            if (!isClickInsideSidebar && !isClickOnToggler && isMobile && html.classList.contains(
-                    'nav_open')) {
-                html.classList.remove('nav_open');
-                document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.remove(
-                    'toggled'));
-            }
-
-    // Topbar toggler (mobile)
-    document.querySelectorAll('.topbar-toggler').forEach(btn => {
-        btn.addEventListener('click', function () {
-            html.classList.toggle('topbar_open');
-            this.classList.toggle('toggled');
-
-        });
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
         const toggleThemeBtn = document.getElementById('toggleTheme');
-        const body = document.body;
+        const logo = document.querySelector('.logo-header'); // Define this properly if you use it
 
-        // Check if dark mode was previously enabled
+        // 1. Restore theme from localStorage
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
         }
 
+        // 2. Toggle dark/light mode
         if (toggleThemeBtn) {
             toggleThemeBtn.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -229,14 +170,7 @@
                 const isDark = body.classList.contains('dark-mode');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-    // Click-outside-to-close behavior (for mobile sidebar)
-    document.addEventListener('click', function (event) {
-        const isClickInsideSidebar = sidebar?.contains(event.target);
-        const isClickOnToggler = event.target.closest('.sidenav-toggler');
-        const isMobile = window.innerWidth <= 991;
-
-
-                // Optional: toggle icon
+                // Optional: Toggle theme icon
                 const icon = this.querySelector('i');
                 if (icon) {
                     icon.classList.toggle('fa-moon');
@@ -244,19 +178,64 @@
                 }
             });
         }
-    });
 
+        // 3. Sidebar toggler
+        document.querySelectorAll('.sidenav-toggler').forEach(btn => {
+            btn.addEventListener('click', function () {
+                html.classList.toggle('nav_open');
+                this.classList.toggle('toggled');
+                wrapper.classList.toggle('sidebar_minimize');
 
-
-    // ✅ Sidebar toggle on logo click (mobile)
-    if (logo) {
-        logo.addEventListener('click', function () {
-            html.classList.toggle('nav_open');
-            document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.toggle('toggled'));
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.className = wrapper.classList.contains('sidebar_minimize')
+                        ? 'gg-more-vertical-alt'
+                        : 'gg-menu-right';
+                }
+            });
         });
-    }
-});
 
+        // 4. Manual toggle sidebar button (if exists)
+        document.querySelectorAll('.toggle-sidebar').forEach(btn => {
+            btn.addEventListener('click', function () {
+                wrapper.classList.toggle('sidebar_minimize');
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.className = wrapper.classList.contains('sidebar_minimize')
+                        ? 'gg-more-vertical-alt'
+                        : 'gg-menu-right';
+                }
+            });
+        });
+
+        // 5. Topbar toggler
+        document.querySelectorAll('.topbar-toggler').forEach(btn => {
+            btn.addEventListener('click', function () {
+                html.classList.toggle('topbar_open');
+                this.classList.toggle('toggled');
+            });
+        });
+
+        // 6. Click outside to close sidebar on mobile
+        document.addEventListener('click', function (event) {
+            const isClickInsideSidebar = sidebar?.contains(event.target);
+            const isClickOnToggler = event.target.closest('.sidenav-toggler');
+            const isMobile = window.innerWidth <= 991;
+
+            if (!isClickInsideSidebar && !isClickOnToggler && isMobile && html.classList.contains('nav_open')) {
+                html.classList.remove('nav_open');
+                document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.remove('toggled'));
+            }
+        });
+
+        // 7. Logo click toggle sidebar (optional)
+        if (logo) {
+            logo.addEventListener('click', function () {
+                html.classList.toggle('nav_open');
+                document.querySelectorAll('.sidenav-toggler').forEach(btn => btn.classList.toggle('toggled'));
+            });
+        }
+    });
 </script>
 
 

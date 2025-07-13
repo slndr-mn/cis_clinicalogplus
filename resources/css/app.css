@@ -1,7 +1,7 @@
 @import "../css/bootstrap.min.css";
 @import "../css/plugins.min.css";
 @import "../css/kaiadmin.min.css";
-@import "../css/dark-theme.css";
+/* @import "../css/dark-theme.css"; */
 /* @import '../css/client.css';
 @import '../css/fonts.css';
 @import '../css/fonts.min.css';
@@ -20,14 +20,20 @@
         "Noto Color Emoji";
 }
 
+body {
+    transition: background-color 0.3s ease 0.1s, color 0.3s ease 0.1s;
+}
+
 .sidebar {
     transition: background 0.3s ease;
-    /* Initial background */
-    background: linear-gradient(to bottom, #db6079, #da6f65, #e29ab4);
+    background: linear-gradient(135deg, #db6079, #da6f65, #e29ab4);
+    color: white;
 }
+
 .logo-header {
     transition: background 0.3s ease;
 }
+
 .nav-item.active {
     background-color: rgba(0, 0, 0, 0.1);
     color: #fff;
@@ -35,4 +41,27 @@
 
 .nav-item.active i {
     color: #fff;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">" !important;
+    color: #6c757d;
+    padding: 0 0.5rem;
+}
+
+.breadcrumb .breadcrumb-item a {
+    color: #6c757d !important;
+    text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-item a:hover {
+    color: #d63384 !important;
+}
+
+/* Breadcrumbs lower and right-aligned */
+.breadcrumb {
+    margin-top: 2rem;
+    justify-content: flex-start;
+    display: flex;
+    margin-left: 70px;
 }
