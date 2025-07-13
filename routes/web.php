@@ -51,6 +51,105 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name(
 // ============================== 
 Route::middleware('auth:admin')->group(function () {
 
+//ash
+// Admin dashboard routes (requires guard:admin)
+Route::middleware('auth:patient')->group(function () {
+    Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
+    Route::post('/client/logout', [ClientController::class, 'clientLogout'])->name('client.logout');
+});
+
+// Route for Patient Record (for sidebar and All button)
+// Both sidebar and All button should use the same route for consistency
+Route::get('/admin/patientRecord', [PatientRecordController::class, 'index'])->name('patientRecord');
+// Route::get('/patientRecord', function () {
+//     return view('admin.patientRecord');
+// })->name('patientRecord');
+
+// Route for Patient Record Student
+Route::get('/patientRecordstud', function () {
+    return view('admin.patientRecordstud');
+})->name('patientRecordstud');
+
+// Route for Patient Record Faculty
+Route::get('/patientRecordfac', function () {
+    return view('admin.patientRecordfac');
+})->name('patientRecordfac');
+
+// Route for Patient Record Staff
+Route::get('/patientRecordstaff', function () {
+    return view('admin.patientRecordstaff');
+})->name('patientRecordstaff');
+
+// Route for Patient Record Extension
+Route::get('/patientRecordexten', function () {
+    return view('admin.patientRecordexten');
+})->name('patientRecordexten');
+
+// Route for Adding Patient Record Student
+Route::get('/addStudent', function () {
+    return view('admin.addStudent');
+})->name('addStudent');
+
+// Route for Editing Patient Record Student
+Route::get('/editStudent', function () {
+    return view('admin.editStudent');
+})->name('editStudent');
+
+// Route for Adding Patient Record Faculty
+Route::get('/addFaculty', function () {
+    return view('admin.addFaculty');
+})->name('addFaculty');
+
+// Route for Editing Patient Record Faculty
+Route::get('/editFaculty', function () {
+    return view('admin.editFaculty');
+})->name('editFaculty');
+
+// Route for Adding Patient Record Staff
+Route::get('/addStaff', function () {
+    return view('admin.addStaff');
+})->name('addStaff');
+
+// Route for Editing Patient Record Faculty
+Route::get('/editStaff', function () {
+    return view('admin.editStaff');
+})->name('editStaff');
+
+// Route for Adding Patient Record Extension
+Route::get('/addExtension', function () {
+    return view('admin.addExtension');
+})->name('addExtension');
+
+// Route for Editing Patient Record Faculty
+Route::get('/editExtension', function () {
+    return view('admin.editExtension');
+})->name('editExtension');
+
+//Route for Viewing Patient Profile Student
+Route::get('/patientProfilestud', function () {
+    return view('admin.patientProfilestud');
+})->name('patientProfilestud');
+
+// Route for Viewing Patient Profile Faculty
+Route::get('/patientProfilefaculty', function () {
+    return view('admin.patientProfilefaculty');
+})->name('patientProfilefaculty');
+
+// Route for Viewing Patient Profile Staff
+Route::get('/patientProfilestaff', function () {
+    return view('admin.patientProfilestaff');
+})->name('patientProfilestaff');
+
+// Route for Viewing Patient Profile Extension
+Route::get('/patientProfileextension', function () {
+    return view('admin.patientProfileextension');
+})->name('patientProfileextension');
+
+// Route for Medicine Record
+Route::get('/medicine-record', function () {
+    return view('admin.medicineRecord');
+})->name('medicineRecord');
+//ash
     // Dashboard
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
@@ -86,6 +185,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/profile-image/{filename}', [ProfileController::class, 'show'])->name('profile-image');
 
 });
+//mine
 
 
 // ==============================
