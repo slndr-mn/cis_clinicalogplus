@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         // Main Patients Table
-        Schema::create('patients', function (Blueprint $table) { 
+        Schema::create('patients', function (Blueprint $table) {
             $table->id('patient_id');
             $table->string('patient_lname', 255);
             $table->string('patient_fname', 255);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('patient_profile', 255)->nullable();
             $table->enum('patient_patienttype', ['Student', 'Faculty', 'Staff', 'Extension']);
             $table->string('patient_password', 255); // bcrypt
-            $table->enum('patient_status', ['Pending','Active', 'Inactive']);
+            $table->enum('patient_status', ['Pending', 'Active', 'Inactive']);
             $table->mediumInteger('patient_otpcode')->nullable();
             $table->timestamp('patient_otpexpiresat')->nullable();
             $table->timestamps();
@@ -82,26 +82,25 @@ return new class extends Migration
         Schema::create('pataddresses', function (Blueprint $table) {
             $table->id('address_id');
             $table->unsignedBigInteger('address_patientid');
-            $table->string('address_region', 100);
-            $table->string('address_province', 100);
-            $table->string('address_municipality', 100);
-            $table->string('address_barangay', 100);
-            $table->string('address_prkstrtadd', 255)->nullable();
+            $table->text('address_region');
+            $table->text('address_province');
+            $table->text('address_municipality');
+            $table->text('address_barangay');
+            $table->text('address_prkstrtadd')->nullable();
 
             $table->foreign('address_patientid')->references('patient_id')->on('patients')->onDelete('cascade');
         });
 
         //Emergency Contact
-         Schema::create('patemergencycontacts', function (Blueprint $table) {
+        Schema::create('patemergencycontacts', function (Blueprint $table) {
             $table->id('emcon_contactid');
             $table->unsignedBigInteger('emcon_patientid');
-            $table->string('emcon_conname', 100);
-            $table->string('emcon_relationship', 50);
-            $table->string('emcon_connum', 20);
+            $table->text('emcon_conname');
+            $table->text('emcon_relationship');
+            $table->text('emcon_connum');
 
             $table->foreign('emcon_patientid')->references('patient_id')->on('patients')->onDelete('cascade');
         });
-
     }
 
     public function down(): void
