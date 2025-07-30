@@ -80,7 +80,7 @@
                         <li><a href="{{ route('admin.staffuser') }}">Clinic Staff User</a></li>
                     </ul>
                     <ul class="submenu">
-                        <li><a href="{{ route('admin.staffuser') }}">Role and Permission Control</a></li>
+                        <li><a href="{{ route('rbac.index') }}">Role and Permission Control</a></li>
                     </ul>
                 </li>
 

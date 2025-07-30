@@ -5,10 +5,16 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class StaffUser extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+    use HasFactory;
+
+    protected $guard_name = 'web';
 
     protected $table = 'staffusers';
     protected $primaryKey = 'user_id';

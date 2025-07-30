@@ -6,9 +6,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
 
+use Spatie\Permission\Traits\HasRoles;
+
+
 class PatientUsers extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     protected $table = 'patients';
     protected $primaryKey = 'patient_id';
@@ -106,5 +109,11 @@ class PatientUsers extends Authenticatable
     {
         return $this->patient_password;
     }
+
+    public function hasRole($roleName)
+{
+    return $this->patient_patienttype === $roleName;
+}
+
 }
  

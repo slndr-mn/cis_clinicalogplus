@@ -17,6 +17,12 @@ return [
         'guard' => env('AUTH_GUARD', 'web'),
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
+
+    'defaults' => [
+    'guard' => 'patient',  // ✅ use this to authenticate PatientUsers by default
+    'passwords' => 'users',
+],
+
  
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +50,11 @@ return [
         'patient' => [
             'driver' => 'session',
             'provider' => 'patients', 
+        ],
+
+        'web' => [
+        'driver' => 'session',
+        'provider' => 'staffusers', // ✅ Change this line
         ],
     ],
 
@@ -75,6 +86,12 @@ return [
              'driver' => 'eloquent',
              'model' => App\Models\PatientUsers::class,
          ],
+
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PatientUsers::class,
+        ],
+
     ],
 
     /*

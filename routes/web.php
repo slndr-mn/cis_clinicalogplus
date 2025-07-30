@@ -13,6 +13,35 @@ use App\Http\Controllers\StaffUserController;
 use App\Models\StaffUser;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\RbacController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\PatientUsers;
+use App\Http\Controllers\Auth\OtpController;
+
+// Dashboard or Home route
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// RBAC Panel - Show index
+Route::get('/rbac', [RbacController::class, 'index'])->name('rbac.index');
+
+// RBAC Panel - Update permissions
+Route::post('/rbac/update', [RbacController::class, 'update'])->name('rbac.update');
+
+Route::get('/student/check-role', function () {
+    /** @var PatientUsers $student */
+    $student = Auth::guard('patient')->user();
+
+    if ($student && $student->hasRole('Student')) {
+        return '✅ This is a student!';
+    } else {
+        return '❌ Not a student';
+    }
+});
+
+
+Route::post('/verify-otp', [OtpController::class, 'verify'])->name('otp.verify');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

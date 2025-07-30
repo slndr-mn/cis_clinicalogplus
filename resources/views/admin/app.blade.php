@@ -2,6 +2,17 @@
     <html lang="en">
 
     <head>
+
+<style>
+    .alert {
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-out {
+        opacity: 0;
+    }
+</style>
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -174,5 +185,22 @@
         </div>
 
     </body>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ['success', 'error', 'warning'].forEach(type => {
+            const alertBox = document.getElementById(type + 'Alert');
+            if (alertBox) {
+                setTimeout(() => {
+                    alertBox.classList.add('fade-out');
+                    setTimeout(() => {
+                        alertBox.remove();
+                    }, 500); // wait for fade effect
+                }, 2000); // show for 2 seconds
+            }
+        });
+    });
+</script>
+
 
     </html>

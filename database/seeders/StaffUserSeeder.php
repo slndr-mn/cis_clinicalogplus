@@ -15,12 +15,12 @@ class StaffUserSeeder extends Seeder
         'user_fname'    => 'Juan',
         'user_lname'    => 'Dela Cruz',
         'user_mname'    => 'Santos',
-        'user_email'    => 'gmdcasia00136@usep.edu.ph',
+        'user_email'    => 'remarcjohn9271@gmail.com',
         'user_position' => 'Admin',
         'user_role'     => 'Admin', 
         'user_status'   => 'Active',
         'user_profile'  => 'default.png',
-        'user_password' => Hash::make('password123')
+        'user_password' => Hash::make('secret123')
         ]);
  
     } 

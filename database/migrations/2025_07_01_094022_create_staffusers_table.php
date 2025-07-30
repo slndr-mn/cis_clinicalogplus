@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('user_email');
             $table->string('email_hash', 64)->index(); 
             $table->string('user_position', 50);
-            $table->enum('user_role', ['Super Admin', 'Admin', 'Physician']);
+            $table->enum('user_role', ['Super Admin', 'Admin', ' Staff', 'Student']);
             $table->enum('user_status', ['Pending' ,'Active', 'Deactivated', 'Deleted']);
             $table->string('user_profile', 255)->nullable();
             $table->char('user_password', 60);
