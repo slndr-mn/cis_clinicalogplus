@@ -17,17 +17,24 @@ use App\Http\Controllers\RbacController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PatientUsers;
 use App\Http\Controllers\Auth\OtpController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
 // Dashboard or Home route
 Route::get('/', function () {
     return view('welcome');
 });
 
-// RBAC Panel - Show index
-Route::get('/rbac', [RbacController::class, 'index'])->name('rbac.index');
+Route::middleware(['auth:web'])->prefix('rbac')->name('rbac.')->group(function () {
+    Route::get('/', [RbacController::class, 'index'])->name('index');
+    Route::post('/update', [RbacController::class, 'update'])->name('update');
 
-// RBAC Panel - Update permissions
-Route::post('/rbac/update', [RbacController::class, 'update'])->name('rbac.update');
+    Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+    Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+});
+
 
 Route::get('/student/check-role', function () {
     /** @var PatientUsers $student */
@@ -40,8 +47,23 @@ Route::get('/student/check-role', function () {
     }
 });
 
+Route::get('/users', [UserController::class, 'index'])
+    ->middleware('permission:view_user');
+
+
+Route::group(['middleware' => ['role:Admin']], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+});
+
 
 Route::post('/verify-otp', [OtpController::class, 'verify'])->name('otp.verify');
+
+// Group all routes under 'auth' middleware
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/rbac', [RbacController::class, 'index'])->name('rbac.index');
+    Route::post('/admin/rbac/update', [RbacController::class, 'update'])->name('rbac.update');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
